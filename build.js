@@ -190,7 +190,8 @@ function merge(left, right) {
         .concat(right[tagName])
         .filter(function (attribute, index, list) {
           return list.indexOf(attribute) === index;
-        });
+        })
+        .sort();
     });
 }
 

@@ -4,18 +4,22 @@
     "content",
     "datatype",
     "id",
+    "lang",
     "property",
     "rel",
     "resource",
     "rev",
-    "typeof",
-    "lang",
-    "tabindex"
+    "tabindex",
+    "typeof"
   ],
   "a": [
+    "alignment-baseline",
+    "download",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
+    "href",
+    "hreflang",
     "nav-down",
     "nav-down-left",
     "nav-down-right",
@@ -30,19 +34,16 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
     "target",
     "transform",
-    "alignment-baseline",
-    "style",
-    "download",
-    "href",
-    "hreflang",
     "type"
   ],
   "animate": [
     "accumulate",
     "additive",
+    "alignment-baseline",
     "attributeName",
     "attributeType",
     "begin",
@@ -50,8 +51,10 @@
     "calcMode",
     "dur",
     "end",
+    "externalResourcesRequired",
     "fill",
     "from",
+    "href",
     "keySplines",
     "keyTimes",
     "max",
@@ -65,14 +68,12 @@
     "restart",
     "systemLanguage",
     "to",
-    "values",
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "href"
+    "values"
   ],
   "animateColor": [
     "accumulate",
     "additive",
+    "alignment-baseline",
     "attributeName",
     "attributeType",
     "begin",
@@ -80,6 +81,7 @@
     "calcMode",
     "dur",
     "end",
+    "externalResourcesRequired",
     "fill",
     "from",
     "keySplines",
@@ -95,9 +97,7 @@
     "restart",
     "systemLanguage",
     "to",
-    "values",
-    "alignment-baseline",
-    "externalResourcesRequired"
+    "values"
   ],
   "animateMotion": [
     "accumulate",
@@ -107,8 +107,10 @@
     "calcMode",
     "dur",
     "end",
+    "externalResourcesRequired",
     "fill",
     "from",
+    "href",
     "keyPoints",
     "keySplines",
     "keyTimes",
@@ -126,9 +128,7 @@
     "rotate",
     "systemLanguage",
     "to",
-    "values",
-    "externalResourcesRequired",
-    "href"
+    "values"
   ],
   "animateTransform": [
     "accumulate",
@@ -140,8 +140,10 @@
     "calcMode",
     "dur",
     "end",
+    "externalResourcesRequired",
     "fill",
     "from",
+    "href",
     "keySplines",
     "keyTimes",
     "max",
@@ -156,9 +158,7 @@
     "systemLanguage",
     "to",
     "type",
-    "values",
-    "externalResourcesRequired",
-    "href"
+    "values"
   ],
   "animation": [
     "begin",
@@ -214,16 +214,18 @@
     "requiredFonts",
     "requiredFormats",
     "restart",
+    "style",
     "syncBehavior",
     "syncMaster",
     "syncTolerance",
     "systemLanguage",
-    "type",
-    "style"
+    "type"
   ],
   "circle": [
+    "alignment-baseline",
     "cx",
     "cy",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -236,38 +238,38 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "r",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "externalResourcesRequired",
     "style",
-    "pathLength"
+    "systemLanguage",
+    "transform"
   ],
   "desc": [
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "style"
+    "style",
+    "systemLanguage"
   ],
   "discard": [
     "begin",
+    "href",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "href"
+    "systemLanguage"
   ],
   "ellipse": [
+    "alignment-baseline",
     "cx",
     "cy",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -280,24 +282,22 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
     "rx",
     "ry",
-    "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "externalResourcesRequired",
     "style",
-    "pathLength"
+    "systemLanguage",
+    "transform"
   ],
   "font": [
+    "alignment-baseline",
     "externalResourcesRequired",
     "horiz-adv-x",
     "horiz-origin-x",
-    "alignment-baseline",
     "horiz-origin-y",
     "style",
     "vert-adv-y",
@@ -313,6 +313,7 @@
     "descent",
     "externalResourcesRequired",
     "font-family",
+    "font-size",
     "font-stretch",
     "font-style",
     "font-variant",
@@ -332,18 +333,18 @@
     "underline-thickness",
     "unicode-range",
     "units-per-em",
-    "widths",
-    "x-height",
-    "font-size",
     "v-alphabetic",
     "v-hanging",
     "v-ideographic",
-    "v-mathematical"
+    "v-mathematical",
+    "widths",
+    "x-height"
   ],
   "font-face-uri": [
     "externalResourcesRequired"
   ],
   "foreignObject": [
+    "alignment-baseline",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
@@ -362,15 +363,15 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
     "transform",
     "width",
     "x",
-    "y",
-    "alignment-baseline",
-    "style"
+    "y"
   ],
   "g": [
+    "alignment-baseline",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
@@ -388,20 +389,19 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "style"
+    "transform"
   ],
   "glyph": [
+    "alignment-baseline",
     "arabic-form",
     "d",
     "glyph-name",
     "horiz-adv-x",
-    "unicode",
-    "alignment-baseline",
     "orientation",
     "style",
+    "unicode",
     "vert-adv-y",
     "vert-origin-x",
     "vert-origin-y"
@@ -418,10 +418,13 @@
     "u2"
   ],
   "image": [
+    "alignment-baseline",
+    "crossorigin",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "height",
+    "href",
     "nav-down",
     "nav-down-left",
     "nav-down-right",
@@ -437,18 +440,17 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
     "transform",
     "type",
     "width",
     "x",
-    "y",
-    "alignment-baseline",
-    "style",
-    "crossorigin",
-    "href"
+    "y"
   ],
   "line": [
+    "alignment-baseline",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -461,33 +463,31 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
     "transform",
     "x1",
     "x2",
     "y1",
-    "y2",
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "style",
-    "pathLength"
+    "y2"
   ],
   "linearGradient": [
-    "gradientUnits",
-    "x1",
-    "x2",
-    "y1",
-    "y2",
     "alignment-baseline",
     "externalResourcesRequired",
     "gradientTransform",
+    "gradientUnits",
+    "href",
     "spreadMethod",
     "style",
-    "href"
+    "x1",
+    "x2",
+    "y1",
+    "y2"
   ],
   "listener": [
     "defaultAction",
@@ -506,16 +506,18 @@
     "systemLanguage"
   ],
   "missing-glyph": [
+    "alignment-baseline",
     "d",
     "horiz-adv-x",
-    "alignment-baseline",
     "style",
     "vert-adv-y",
     "vert-origin-x",
     "vert-origin-y"
   ],
   "path": [
+    "alignment-baseline",
     "d",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -533,13 +535,13 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "style"
+    "transform"
   ],
   "polygon": [
+    "alignment-baseline",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -552,19 +554,19 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "points",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "externalResourcesRequired",
     "style",
-    "pathLength"
+    "systemLanguage",
+    "transform"
   ],
   "polyline": [
+    "alignment-baseline",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "nav-down",
@@ -577,17 +579,15 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "points",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "externalResourcesRequired",
     "style",
-    "pathLength"
+    "systemLanguage",
+    "transform"
   ],
   "prefetch": [
     "bandwidth",
@@ -597,21 +597,23 @@
     "mediaTime"
   ],
   "radialGradient": [
+    "alignment-baseline",
     "cx",
     "cy",
-    "gradientUnits",
-    "r",
-    "alignment-baseline",
     "externalResourcesRequired",
+    "fr",
     "fx",
     "fy",
     "gradientTransform",
+    "gradientUnits",
+    "href",
+    "r",
     "spreadMethod",
-    "style",
-    "fr",
-    "href"
+    "style"
   ],
   "rect": [
+    "alignment-baseline",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
     "height",
@@ -625,27 +627,25 @@
     "nav-up",
     "nav-up-left",
     "nav-up-right",
+    "pathLength",
     "requiredExtensions",
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
     "rx",
     "ry",
+    "style",
     "systemLanguage",
     "transform",
     "width",
     "x",
-    "y",
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "style",
-    "pathLength"
+    "y"
   ],
   "script": [
-    "externalResourcesRequired",
-    "type",
     "crossorigin",
-    "href"
+    "externalResourcesRequired",
+    "href",
+    "type"
   ],
   "set": [
     "attributeName",
@@ -653,7 +653,9 @@
     "begin",
     "dur",
     "end",
+    "externalResourcesRequired",
     "fill",
+    "href",
     "max",
     "min",
     "repeatCount",
@@ -664,19 +666,19 @@
     "requiredFormats",
     "restart",
     "systemLanguage",
-    "to",
-    "externalResourcesRequired",
-    "href"
+    "to"
   ],
   "stop": [
-    "offset",
     "alignment-baseline",
-    "style",
-    "path"
+    "offset",
+    "path",
+    "style"
   ],
   "svg": [
+    "alignment-baseline",
     "baseProfile",
     "contentScriptType",
+    "contentStyleType",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
@@ -692,28 +694,27 @@
     "nav-up-left",
     "nav-up-right",
     "playbackOrder",
+    "playbackorder",
     "preserveAspectRatio",
+    "requiredExtensions",
+    "requiredFeatures",
     "snapshotTime",
+    "style",
     "syncBehaviorDefault",
     "syncToleranceDefault",
+    "systemLanguage",
     "timelineBegin",
+    "timelinebegin",
+    "transform",
     "version",
     "viewBox",
     "width",
-    "zoomAndPan",
-    "alignment-baseline",
-    "contentStyleType",
-    "requiredExtensions",
-    "requiredFeatures",
-    "style",
-    "systemLanguage",
     "x",
     "y",
-    "playbackorder",
-    "timelinebegin",
-    "transform"
+    "zoomAndPan"
   ],
   "switch": [
+    "alignment-baseline",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
@@ -731,10 +732,9 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
-    "transform",
-    "alignment-baseline",
-    "style"
+    "transform"
   ],
   "tbreak": [
     "requiredExtensions",
@@ -744,9 +744,14 @@
     "systemLanguage"
   ],
   "text": [
+    "alignment-baseline",
+    "dx",
+    "dy",
     "editable",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
+    "lengthAdjust",
     "nav-down",
     "nav-down-left",
     "nav-down-right",
@@ -762,17 +767,12 @@
     "requiredFonts",
     "requiredFormats",
     "rotate",
+    "style",
     "systemLanguage",
+    "textLength",
     "transform",
     "x",
-    "y",
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "externalResourcesRequired",
-    "lengthAdjust",
-    "style",
-    "textLength"
+    "y"
   ],
   "textArea": [
     "editable",
@@ -804,12 +804,17 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "style"
+    "style",
+    "systemLanguage"
   ],
   "tspan": [
+    "alignment-baseline",
+    "dx",
+    "dy",
+    "externalResourcesRequired",
     "focusHighlight",
     "focusable",
+    "lengthAdjust",
     "nav-down",
     "nav-down-left",
     "nav-down-right",
@@ -824,22 +829,20 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
-    "systemLanguage",
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "externalResourcesRequired",
-    "lengthAdjust",
     "rotate",
     "style",
+    "systemLanguage",
     "textLength",
     "x",
     "y"
   ],
   "use": [
+    "alignment-baseline",
     "externalResourcesRequired",
     "focusHighlight",
     "focusable",
+    "height",
+    "href",
     "nav-down",
     "nav-down-left",
     "nav-down-right",
@@ -854,15 +857,12 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
     "systemLanguage",
     "transform",
-    "x",
-    "y",
-    "alignment-baseline",
-    "height",
-    "style",
     "width",
-    "href"
+    "x",
+    "y"
   ],
   "video": [
     "begin",
@@ -895,6 +895,7 @@
     "requiredFonts",
     "requiredFormats",
     "restart",
+    "style",
     "syncBehavior",
     "syncMaster",
     "syncTolerance",
@@ -904,8 +905,7 @@
     "type",
     "width",
     "x",
-    "y",
-    "style"
+    "y"
   ],
   "altGlyph": [
     "alignment-baseline",
@@ -939,12 +939,12 @@
   ],
   "cursor": [
     "externalResourcesRequired",
+    "href",
     "requiredExtensions",
     "requiredFeatures",
     "systemLanguage",
     "x",
-    "y",
-    "href"
+    "y"
   ],
   "defs": [
     "alignment-baseline",
@@ -1102,6 +1102,7 @@
   ],
   "feGaussianBlur": [
     "alignment-baseline",
+    "edgeMode",
     "height",
     "in",
     "result",
@@ -1109,21 +1110,20 @@
     "style",
     "width",
     "x",
-    "y",
-    "edgeMode"
+    "y"
   ],
   "feImage": [
     "alignment-baseline",
+    "crossorigin",
     "externalResourcesRequired",
     "height",
+    "href",
     "preserveAspectRatio",
     "result",
     "style",
     "width",
     "x",
-    "y",
-    "crossorigin",
-    "href"
+    "y"
   ],
   "feMerge": [
     "alignment-baseline",
@@ -1274,6 +1274,7 @@
     "alignment-baseline",
     "externalResourcesRequired",
     "height",
+    "href",
     "patternContentUnits",
     "patternTransform",
     "patternUnits",
@@ -1285,8 +1286,7 @@
     "viewBox",
     "width",
     "x",
-    "y",
-    "href"
+    "y"
   ],
   "style": [
     "media",
@@ -1297,26 +1297,26 @@
     "alignment-baseline",
     "externalResourcesRequired",
     "preserveAspectRatio",
-    "style",
-    "viewBox",
     "refX",
-    "refY"
+    "refY",
+    "style",
+    "viewBox"
   ],
   "textPath": [
     "alignment-baseline",
     "externalResourcesRequired",
+    "href",
     "lengthAdjust",
     "method",
+    "path",
     "requiredExtensions",
     "requiredFeatures",
+    "side",
     "spacing",
     "startOffset",
     "style",
     "systemLanguage",
-    "textLength",
-    "href",
-    "path",
-    "side"
+    "textLength"
   ],
   "tref": [
     "alignment-baseline",
