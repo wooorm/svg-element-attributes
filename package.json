@@ -1,6 +1,6 @@
 {
   "name": "svg-element-attributes",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Map of SVG elements to allowed attributes",
   "license": "MIT",
   "keywords": [
