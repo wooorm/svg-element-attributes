@@ -1,0 +1,59 @@
+{
+  "name": "svg-element-attributes",
+  "version": "0.0.0",
+  "description": "Map of SVG elements to allowed attributes",
+  "license": "MIT",
+  "keywords": [
+    "svg",
+    "element",
+    "tag",
+    "name",
+    "attribute",
+    "property",
+    "w3c"
+  ],
+  "repository": "https://github.com/wooorm/svg-element-attributes",
+  "bugs": "https://github.com/wooorm/svg-element-attributes/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "main": "index.json",
+  "files": [
+    "index.json"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "bail": "^1.0.0",
+    "browserify": "^14.1.0",
+    "esmangle": "^1.0.1",
+    "hast-util-is-event-handler": "^1.0.0",
+    "jsdom": "^9.8.3",
+    "remark-cli": "^3.0.0",
+    "remark-preset-wooorm": "^2.0.0",
+    "tape": "^4.4.0",
+    "xo": "^0.18.0"
+  },
+  "scripts": {
+    "build-md": "remark . -qfo",
+    "build-crawl": "node build",
+    "build-bundle": "browserify index.json --bare -s svgElementAttributes > svg-element-attributes.js",
+    "build-mangle": "esmangle svg-element-attributes.js > svg-element-attributes.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint": "xo",
+    "test-api": "node test",
+    "test": "npm run build && npm run lint && npm run test-api"
+  },
+  "xo": {
+    "space": true,
+    "esnext": false,
+    "ignores": [
+      "svg-element-attributes.js"
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
+  }
+}

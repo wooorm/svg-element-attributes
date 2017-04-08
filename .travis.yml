@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '4.0'
+- '7.0'
+deploy:
+  - provider: npm
+    email: tituswormer@gmail.com
+    api_key:
+      secure: Mt51H61jjo4MSITM/LOLLXt9a6aJ/oHC+dB0ud7XFlA7Oy+N7pyMPb1/AZbWQySdsWAfy4j1PvEyTra99JXhDgVpO6UErXNN2pv3JDf5AyWPJHJFE01vCZ82ScCmKJ8cAfKMPYTmrdhcvylezg+8bA1TLTghNwWCrFoQBDpMSI6EZpMufvARcmJ4v6Wx/AK90yLyLr2GkCO2UExllptGtDuDEwmqH/zj3HgkwYBWeK4ae9rTjs/7VYdrw13xt9iThWHZM1wIWlVRlXkoD6GY3gqGicrQ+/0WGQgsncFzzYl3qKF0TbB+ynj/T3TBoRGsDaZ+eohZrxjCSeZ7qDEX7L9Z57oViQD/eVWHMCKq/8xPM755jtnRthrPPJES0CDEAjfciLFYnx/yTjTClhYL45BS+mgg2P2bCvCwQV0MB9GdjfsqnYWii86YcIyddvAA7LLIk2418fn3s8tBe9g7Czj7klVeHAiqhJHw/ms3XSt5LxSHq+OVPz5oFsDoQ4o7O2MFs7snia+CJWTmiW2RceoeTEyxH0pKdbW7vYU9YiX+z6bkNNxQWgTMSBwHf7tyWSwEWZv0oYoKbAuSQa9ZH7Z61JuAMS/45ybHZwA2Ruo/CrVBNn0NWM89khX+q5/STM3I/TgIxmRA0KQJA9mAn1A/zqHCZYFgu6QCrPS2nyE=
+    on:
+      tags: true
+      node: '4.0'
+  - provider: releases
+    api_key:
+      secure: FZw+HLVgzfWr1r6PH9oRN3yTXU3rPuPzhaE0a3gJa8k/NmQIeGSa/x+zRXpyYJjNk/tMTxeh5XCgszbWbtOOUaHdtOMNeoEnrdYk49bbY9qU5Y77ZUrJFhnbg6XnDLnMTqwGuLOJ+9J5sTeuWIV+JPNbsAqVVsbOOr+YKKPpinekhEU3jvIYECJHKQ9MbjyXpzRFsSCLdZvBqcsRShfgccb9cAye2BGs4aPCpSYMRtXBn0QAOqXu7dTTnDcdvVwvVVvKif08FbpqpwOwXTrHk+kZVSaTfTEVNIteRkQ1RnNQlSE0vG6qHwstY+FvFFsmENveUfqAuqIhpjHn05lkrWoeQR71t4NCBPn9WJWNfUfoxmedVxoDG/2mPPhLZonrciGhQsm2CQYcMz0pwEY0GE6tgcTEQTZOGBM4btCcbn8BrFrscvDyc5CBMiUJtVbGqh94oQmghiqY2z1k9P8kNGlTUpHlmQHBelkb6ZSOOCLnKk1fy1N/GXU7PQXWD9lZSLIHc+HYRYs925sFKPi8qQffBYvNiyg1CCQH/KoMlZdQy3aahJyolu/6DLELacBSy05TVO2JSzZsSKciTQ+PLD50IZ9vQQ9pxsvKdrHtgKaBMxBzus97+JGH9MUod4VqyZPTkZnxtRk2ZzCnrmhjYe1pcsSgXECu3lHeDE9SL4I=
+    file:
+      - "svg-element-attributes.js"
+      - "svg-element-attributes.min.js"
+    on:
+      tags: true
+      node: '7.0'
