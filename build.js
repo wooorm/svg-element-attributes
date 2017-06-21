@@ -1,7 +1,7 @@
 'use strict';
 
 var fs = require('fs');
-var jsdom = require('jsdom');
+var JSDOM = require('jsdom').JSDOM;
 var bail = require('bail');
 var ev = require('hast-util-is-event-handler');
 
@@ -11,11 +11,9 @@ var expected = 3;
 var all = {};
 
 /* Crawl SVG 1.1. */
-jsdom.env('https://www.w3.org/TR/SVG/attindex.html', function (err, win) {
-  bail(err);
-
+JSDOM.fromURL('https://www.w3.org/TR/SVG/attindex.html').then(function (dom) {
   var map = {};
-  var rows = win.document.querySelectorAll('.property-table tr');
+  var rows = dom.window.document.querySelectorAll('.property-table tr');
   var position = -1;
   var length = rows.length;
   var node;
@@ -42,12 +40,9 @@ jsdom.env('https://www.w3.org/TR/SVG/attindex.html', function (err, win) {
 });
 
 /* Crawl SVG Tiny 1.2. */
-jsdom.env('https://www.w3.org/TR/SVGTiny12/attributeTable.html', function (err, win) {
-  bail(err);
-
+JSDOM.fromURL('https://www.w3.org/TR/SVGTiny12/attributeTable.html').then(function (dom) {
   var map = {};
-  var doc = win.document;
-  var rows = doc.querySelectorAll('#attributes .attribute');
+  var rows = dom.window.document.querySelectorAll('#attributes .attribute');
   var position = 0;
   var length = rows.length;
   var name;
@@ -67,12 +62,9 @@ jsdom.env('https://www.w3.org/TR/SVGTiny12/attributeTable.html', function (err, 
 });
 
 /* Crawl SVG 2. */
-jsdom.env('https://www.w3.org/TR/SVG2/attindex.html', function (err, win) {
-  bail(err);
-
+JSDOM.fromURL('https://www.w3.org/TR/SVG2/attindex.html').then(function (dom) {
   var map = {};
-  var doc = win.document;
-  var heading = doc.getElementById('RegularAttributes');
+  var heading = dom.window.document.getElementById('RegularAttributes');
   var table = heading.nextElementSibling.nextElementSibling;
   var rows = table.querySelectorAll('tbody tr');
   var position = 0;
@@ -198,7 +190,8 @@ function merge(left, right) {
 function cleanAll(map) {
   var globals = map['*'];
 
-  Object.keys(map)
+  Object
+    .keys(map)
     .forEach(function (tagName) {
       if (tagName !== '*') {
         map[tagName] = map[tagName]
