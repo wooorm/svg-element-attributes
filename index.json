@@ -40,6 +40,21 @@
     "transform",
     "type"
   ],
+  "altGlyph": [
+    "alignment-baseline",
+    "dx",
+    "dy",
+    "externalResourcesRequired",
+    "format",
+    "glyphRef",
+    "requiredExtensions",
+    "requiredFeatures",
+    "rotate",
+    "style",
+    "systemLanguage",
+    "x",
+    "y"
+  ],
   "animate": [
     "accumulate",
     "additive",
@@ -221,6 +236,12 @@
     "systemLanguage",
     "type"
   ],
+  "canvas": [
+    "preserveAspectRatio",
+    "requiredExtensions",
+    "style",
+    "systemLanguage"
+  ],
   "circle": [
     "alignment-baseline",
     "cx",
@@ -244,6 +265,39 @@
     "requiredFeatures",
     "requiredFonts",
     "requiredFormats",
+    "style",
+    "systemLanguage",
+    "transform"
+  ],
+  "clipPath": [
+    "alignment-baseline",
+    "clipPathUnits",
+    "externalResourcesRequired",
+    "requiredExtensions",
+    "requiredFeatures",
+    "style",
+    "systemLanguage",
+    "transform"
+  ],
+  "color-profile": [
+    "local",
+    "name",
+    "rendering-intent"
+  ],
+  "cursor": [
+    "externalResourcesRequired",
+    "href",
+    "requiredExtensions",
+    "requiredFeatures",
+    "systemLanguage",
+    "x",
+    "y"
+  ],
+  "defs": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "requiredExtensions",
+    "requiredFeatures",
     "style",
     "systemLanguage",
     "transform"
@@ -293,6 +347,289 @@
     "systemLanguage",
     "transform"
   ],
+  "feBlend": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "in2",
+    "mode",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feColorMatrix": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "result",
+    "style",
+    "type",
+    "values",
+    "width",
+    "x",
+    "y"
+  ],
+  "feComponentTransfer": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feComposite": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "in2",
+    "k1",
+    "k2",
+    "k3",
+    "k4",
+    "operator",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feConvolveMatrix": [
+    "alignment-baseline",
+    "bias",
+    "divisor",
+    "edgeMode",
+    "height",
+    "in",
+    "kernelMatrix",
+    "kernelUnitLength",
+    "order",
+    "preserveAlpha",
+    "result",
+    "style",
+    "targetX",
+    "targetY",
+    "width",
+    "x",
+    "y"
+  ],
+  "feDiffuseLighting": [
+    "alignment-baseline",
+    "diffuseConstant",
+    "height",
+    "in",
+    "kernelUnitLength",
+    "result",
+    "style",
+    "surfaceScale",
+    "width",
+    "x",
+    "y"
+  ],
+  "feDisplacementMap": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "in2",
+    "result",
+    "scale",
+    "style",
+    "width",
+    "x",
+    "xChannelSelector",
+    "y",
+    "yChannelSelector"
+  ],
+  "feDistantLight": [
+    "azimuth",
+    "elevation"
+  ],
+  "feDropShadow": [
+    "dx",
+    "dy",
+    "height",
+    "in",
+    "result",
+    "stdDeviation",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feFlood": [
+    "alignment-baseline",
+    "height",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feFuncA": [
+    "amplitude",
+    "exponent",
+    "intercept",
+    "offset",
+    "slope",
+    "tableValues",
+    "type"
+  ],
+  "feFuncB": [
+    "amplitude",
+    "exponent",
+    "intercept",
+    "offset",
+    "slope",
+    "tableValues",
+    "type"
+  ],
+  "feFuncG": [
+    "amplitude",
+    "exponent",
+    "intercept",
+    "offset",
+    "slope",
+    "tableValues",
+    "type"
+  ],
+  "feFuncR": [
+    "amplitude",
+    "exponent",
+    "intercept",
+    "offset",
+    "slope",
+    "tableValues",
+    "type"
+  ],
+  "feGaussianBlur": [
+    "alignment-baseline",
+    "edgeMode",
+    "height",
+    "in",
+    "result",
+    "stdDeviation",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feImage": [
+    "alignment-baseline",
+    "crossorigin",
+    "externalResourcesRequired",
+    "height",
+    "href",
+    "preserveAspectRatio",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feMerge": [
+    "alignment-baseline",
+    "height",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feMergeNode": [
+    "in"
+  ],
+  "feMorphology": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "operator",
+    "radius",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feOffset": [
+    "alignment-baseline",
+    "dx",
+    "dy",
+    "height",
+    "in",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "fePointLight": [
+    "x",
+    "y",
+    "z"
+  ],
+  "feSpecularLighting": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "kernelUnitLength",
+    "result",
+    "specularConstant",
+    "specularExponent",
+    "style",
+    "surfaceScale",
+    "width",
+    "x",
+    "y"
+  ],
+  "feSpotLight": [
+    "limitingConeAngle",
+    "pointsAtX",
+    "pointsAtY",
+    "pointsAtZ",
+    "specularExponent",
+    "x",
+    "y",
+    "z"
+  ],
+  "feTile": [
+    "alignment-baseline",
+    "height",
+    "in",
+    "result",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
+  "feTurbulence": [
+    "alignment-baseline",
+    "baseFrequency",
+    "height",
+    "numOctaves",
+    "result",
+    "seed",
+    "stitchTiles",
+    "style",
+    "type",
+    "width",
+    "x",
+    "y"
+  ],
+  "filter": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "filterRes",
+    "filterUnits",
+    "height",
+    "primitiveUnits",
+    "style",
+    "width",
+    "x",
+    "y"
+  ],
   "font": [
     "alignment-baseline",
     "externalResourcesRequired",
@@ -339,6 +676,12 @@
     "v-mathematical",
     "widths",
     "x-height"
+  ],
+  "font-face-format": [
+    "string"
+  ],
+  "font-face-name": [
+    "name"
   ],
   "font-face-uri": [
     "externalResourcesRequired"
@@ -406,9 +749,35 @@
     "vert-origin-x",
     "vert-origin-y"
   ],
+  "glyphRef": [
+    "alignment-baseline",
+    "dx",
+    "dy",
+    "format",
+    "glyphRef",
+    "style",
+    "x",
+    "y"
+  ],
   "handler": [
     "externalResourcesRequired",
     "type"
+  ],
+  "hatch": [
+    "hatchContentUnits",
+    "hatchUnits",
+    "href",
+    "pitch",
+    "rotate",
+    "style",
+    "transform",
+    "x",
+    "y"
+  ],
+  "hatchpath": [
+    "d",
+    "offset",
+    "style"
   ],
   "hkern": [
     "g1",
@@ -416,6 +785,11 @@
     "k",
     "u1",
     "u2"
+  ],
+  "iframe": [
+    "requiredExtensions",
+    "style",
+    "systemLanguage"
   ],
   "image": [
     "alignment-baseline",
@@ -498,6 +872,53 @@
     "propagate",
     "target"
   ],
+  "marker": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "markerHeight",
+    "markerUnits",
+    "markerWidth",
+    "orient",
+    "preserveAspectRatio",
+    "refX",
+    "refY",
+    "style",
+    "viewBox"
+  ],
+  "mask": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "height",
+    "maskContentUnits",
+    "maskUnits",
+    "requiredExtensions",
+    "requiredFeatures",
+    "style",
+    "systemLanguage",
+    "width",
+    "x",
+    "y"
+  ],
+  "mesh": [
+    "href",
+    "requiredExtensions",
+    "systemLanguage"
+  ],
+  "meshgradient": [
+    "gradientUnits",
+    "href",
+    "style",
+    "transform",
+    "type",
+    "x",
+    "y"
+  ],
+  "meshpatch": [
+    "style"
+  ],
+  "meshrow": [
+    "style"
+  ],
   "metadata": [
     "requiredExtensions",
     "requiredFeatures",
@@ -513,6 +934,10 @@
     "vert-adv-y",
     "vert-origin-x",
     "vert-origin-y"
+  ],
+  "mpath": [
+    "externalResourcesRequired",
+    "href"
   ],
   "path": [
     "alignment-baseline",
@@ -538,6 +963,24 @@
     "style",
     "systemLanguage",
     "transform"
+  ],
+  "pattern": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "height",
+    "href",
+    "patternContentUnits",
+    "patternTransform",
+    "patternUnits",
+    "preserveAspectRatio",
+    "requiredExtensions",
+    "requiredFeatures",
+    "style",
+    "systemLanguage",
+    "viewBox",
+    "width",
+    "x",
+    "y"
   ],
   "polygon": [
     "alignment-baseline",
@@ -668,11 +1111,19 @@
     "systemLanguage",
     "to"
   ],
+  "solidcolor": [
+    "style"
+  ],
   "stop": [
     "alignment-baseline",
     "offset",
     "path",
     "style"
+  ],
+  "style": [
+    "media",
+    "title",
+    "type"
   ],
   "svg": [
     "alignment-baseline",
@@ -735,6 +1186,15 @@
     "style",
     "systemLanguage",
     "transform"
+  ],
+  "symbol": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "preserveAspectRatio",
+    "refX",
+    "refY",
+    "style",
+    "viewBox"
   ],
   "tbreak": [
     "requiredExtensions",
@@ -799,6 +1259,22 @@
     "x",
     "y"
   ],
+  "textPath": [
+    "alignment-baseline",
+    "externalResourcesRequired",
+    "href",
+    "lengthAdjust",
+    "method",
+    "path",
+    "requiredExtensions",
+    "requiredFeatures",
+    "side",
+    "spacing",
+    "startOffset",
+    "style",
+    "systemLanguage",
+    "textLength"
+  ],
   "title": [
     "requiredExtensions",
     "requiredFeatures",
@@ -806,6 +1282,21 @@
     "requiredFormats",
     "style",
     "systemLanguage"
+  ],
+  "tref": [
+    "alignment-baseline",
+    "dx",
+    "dy",
+    "externalResourcesRequired",
+    "lengthAdjust",
+    "requiredExtensions",
+    "requiredFeatures",
+    "rotate",
+    "style",
+    "systemLanguage",
+    "textLength",
+    "x",
+    "y"
   ],
   "tspan": [
     "alignment-baseline",
@@ -835,6 +1326,11 @@
     "textLength",
     "x",
     "y"
+  ],
+  "unknown": [
+    "requiredExtensions",
+    "style",
+    "systemLanguage"
   ],
   "use": [
     "alignment-baseline",
@@ -907,432 +1403,6 @@
     "x",
     "y"
   ],
-  "altGlyph": [
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "externalResourcesRequired",
-    "format",
-    "glyphRef",
-    "requiredExtensions",
-    "requiredFeatures",
-    "rotate",
-    "style",
-    "systemLanguage",
-    "x",
-    "y"
-  ],
-  "clipPath": [
-    "alignment-baseline",
-    "clipPathUnits",
-    "externalResourcesRequired",
-    "requiredExtensions",
-    "requiredFeatures",
-    "style",
-    "systemLanguage",
-    "transform"
-  ],
-  "color-profile": [
-    "local",
-    "name",
-    "rendering-intent"
-  ],
-  "cursor": [
-    "externalResourcesRequired",
-    "href",
-    "requiredExtensions",
-    "requiredFeatures",
-    "systemLanguage",
-    "x",
-    "y"
-  ],
-  "defs": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "requiredExtensions",
-    "requiredFeatures",
-    "style",
-    "systemLanguage",
-    "transform"
-  ],
-  "feBlend": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "in2",
-    "mode",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feColorMatrix": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "result",
-    "style",
-    "type",
-    "values",
-    "width",
-    "x",
-    "y"
-  ],
-  "feComponentTransfer": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feComposite": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "in2",
-    "k1",
-    "k2",
-    "k3",
-    "k4",
-    "operator",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feConvolveMatrix": [
-    "alignment-baseline",
-    "bias",
-    "divisor",
-    "edgeMode",
-    "height",
-    "in",
-    "kernelMatrix",
-    "kernelUnitLength",
-    "order",
-    "preserveAlpha",
-    "result",
-    "style",
-    "targetX",
-    "targetY",
-    "width",
-    "x",
-    "y"
-  ],
-  "feDiffuseLighting": [
-    "alignment-baseline",
-    "diffuseConstant",
-    "height",
-    "in",
-    "kernelUnitLength",
-    "result",
-    "style",
-    "surfaceScale",
-    "width",
-    "x",
-    "y"
-  ],
-  "feDisplacementMap": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "in2",
-    "result",
-    "scale",
-    "style",
-    "width",
-    "x",
-    "xChannelSelector",
-    "y",
-    "yChannelSelector"
-  ],
-  "feDistantLight": [
-    "azimuth",
-    "elevation"
-  ],
-  "feFlood": [
-    "alignment-baseline",
-    "height",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feFuncA": [
-    "amplitude",
-    "exponent",
-    "intercept",
-    "offset",
-    "slope",
-    "tableValues",
-    "type"
-  ],
-  "feFuncB": [
-    "amplitude",
-    "exponent",
-    "intercept",
-    "offset",
-    "slope",
-    "tableValues",
-    "type"
-  ],
-  "feFuncG": [
-    "amplitude",
-    "exponent",
-    "intercept",
-    "offset",
-    "slope",
-    "tableValues",
-    "type"
-  ],
-  "feFuncR": [
-    "amplitude",
-    "exponent",
-    "intercept",
-    "offset",
-    "slope",
-    "tableValues",
-    "type"
-  ],
-  "feGaussianBlur": [
-    "alignment-baseline",
-    "edgeMode",
-    "height",
-    "in",
-    "result",
-    "stdDeviation",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feImage": [
-    "alignment-baseline",
-    "crossorigin",
-    "externalResourcesRequired",
-    "height",
-    "href",
-    "preserveAspectRatio",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feMerge": [
-    "alignment-baseline",
-    "height",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feMorphology": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "operator",
-    "radius",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feOffset": [
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "height",
-    "in",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "fePointLight": [
-    "x",
-    "y",
-    "z"
-  ],
-  "feSpecularLighting": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "kernelUnitLength",
-    "result",
-    "specularConstant",
-    "specularExponent",
-    "style",
-    "surfaceScale",
-    "width",
-    "x",
-    "y"
-  ],
-  "feSpotLight": [
-    "limitingConeAngle",
-    "pointsAtX",
-    "pointsAtY",
-    "pointsAtZ",
-    "specularExponent",
-    "x",
-    "y",
-    "z"
-  ],
-  "feTile": [
-    "alignment-baseline",
-    "height",
-    "in",
-    "result",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feTurbulence": [
-    "alignment-baseline",
-    "baseFrequency",
-    "height",
-    "numOctaves",
-    "result",
-    "seed",
-    "stitchTiles",
-    "style",
-    "type",
-    "width",
-    "x",
-    "y"
-  ],
-  "filter": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "filterRes",
-    "filterUnits",
-    "height",
-    "primitiveUnits",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "font-face-format": [
-    "string"
-  ],
-  "font-face-name": [
-    "name"
-  ],
-  "glyphRef": [
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "format",
-    "glyphRef",
-    "style",
-    "x",
-    "y"
-  ],
-  "marker": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "markerHeight",
-    "markerUnits",
-    "markerWidth",
-    "orient",
-    "preserveAspectRatio",
-    "refX",
-    "refY",
-    "style",
-    "viewBox"
-  ],
-  "mask": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "height",
-    "maskContentUnits",
-    "maskUnits",
-    "requiredExtensions",
-    "requiredFeatures",
-    "style",
-    "systemLanguage",
-    "width",
-    "x",
-    "y"
-  ],
-  "mpath": [
-    "externalResourcesRequired",
-    "href"
-  ],
-  "pattern": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "height",
-    "href",
-    "patternContentUnits",
-    "patternTransform",
-    "patternUnits",
-    "preserveAspectRatio",
-    "requiredExtensions",
-    "requiredFeatures",
-    "style",
-    "systemLanguage",
-    "viewBox",
-    "width",
-    "x",
-    "y"
-  ],
-  "style": [
-    "media",
-    "title",
-    "type"
-  ],
-  "symbol": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "preserveAspectRatio",
-    "refX",
-    "refY",
-    "style",
-    "viewBox"
-  ],
-  "textPath": [
-    "alignment-baseline",
-    "externalResourcesRequired",
-    "href",
-    "lengthAdjust",
-    "method",
-    "path",
-    "requiredExtensions",
-    "requiredFeatures",
-    "side",
-    "spacing",
-    "startOffset",
-    "style",
-    "systemLanguage",
-    "textLength"
-  ],
-  "tref": [
-    "alignment-baseline",
-    "dx",
-    "dy",
-    "externalResourcesRequired",
-    "lengthAdjust",
-    "requiredExtensions",
-    "requiredFeatures",
-    "rotate",
-    "style",
-    "systemLanguage",
-    "textLength",
-    "x",
-    "y"
-  ],
   "view": [
     "externalResourcesRequired",
     "preserveAspectRatio",
@@ -1346,75 +1416,5 @@
     "k",
     "u1",
     "u2"
-  ],
-  "canvas": [
-    "preserveAspectRatio",
-    "requiredExtensions",
-    "style",
-    "systemLanguage"
-  ],
-  "feDropShadow": [
-    "dx",
-    "dy",
-    "height",
-    "in",
-    "result",
-    "stdDeviation",
-    "style",
-    "width",
-    "x",
-    "y"
-  ],
-  "feMergeNode": [
-    "in"
-  ],
-  "hatch": [
-    "hatchContentUnits",
-    "hatchUnits",
-    "href",
-    "pitch",
-    "rotate",
-    "style",
-    "transform",
-    "x",
-    "y"
-  ],
-  "hatchpath": [
-    "d",
-    "offset",
-    "style"
-  ],
-  "iframe": [
-    "requiredExtensions",
-    "style",
-    "systemLanguage"
-  ],
-  "mesh": [
-    "href",
-    "requiredExtensions",
-    "systemLanguage"
-  ],
-  "meshgradient": [
-    "gradientUnits",
-    "href",
-    "style",
-    "transform",
-    "type",
-    "x",
-    "y"
-  ],
-  "meshpatch": [
-    "style"
-  ],
-  "meshrow": [
-    "style"
-  ],
-  "solidcolor": [
-    "style"
-  ],
-  "unknown": [
-    "requiredExtensions",
-    "style",
-    "systemLanguage"
   ]
 }

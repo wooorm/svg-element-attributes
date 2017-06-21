@@ -24,6 +24,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "alpha-sort": "^2.0.1",
     "bail": "^1.0.0",
     "browserify": "^14.1.0",
     "esmangle": "^1.0.1",

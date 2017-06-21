@@ -3,6 +3,7 @@
 var fs = require('fs');
 var JSDOM = require('jsdom').JSDOM;
 var bail = require('bail');
+var alphaSort = require('alpha-sort');
 var ev = require('hast-util-is-event-handler');
 
 var actual = 0;
@@ -93,7 +94,7 @@ function done(map) {
   actual++;
 
   if (actual === expected) {
-    fs.writeFile('index.json', JSON.stringify(all, 0, 2) + '\n', bail);
+    fs.writeFile('index.json', JSON.stringify(sort(all), 0, 2) + '\n', bail);
   }
 }
 
@@ -200,4 +201,17 @@ function cleanAll(map) {
           });
       }
     });
+}
+
+function sort(map) {
+  var result = {};
+
+  Object
+    .keys(map)
+    .sort(alphaSort.asc)
+    .forEach(function (key) {
+      result[key] = map[key];
+    });
+
+  return result;
 }
