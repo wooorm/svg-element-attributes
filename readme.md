@@ -22,36 +22,29 @@ npm install svg-element-attributes
 ```javascript
 var svgElementAttributes = require('svg-element-attributes');
 
-var globals = svgElementAttributes['*'];
+console.log(svgElementAttributes['*']);
+console.log(svgElementAttributes.circle);
 ```
 
 Yields:
 
 ```js
-[ 'class',
+[ 'about',
+  'class',
   'content',
   'datatype',
   'id',
+  'lang',
   'property',
   'rel',
   'resource',
   'rev',
-  'typeof',
-  'lang',
-  'tabindex' ]
-```
-
-Attributes on the `circle` element:
-
-```javascript
-var circle = svgElementAttributes.circle;
-```
-
-Yields:
-
-```js
-[ 'cx',
+  'tabindex',
+  'typeof' ]
+[ 'alignment-baseline',
+  'cx',
   'cy',
+  'externalResourcesRequired',
   'focusHighlight',
   'focusable',
   'nav-down',
@@ -64,17 +57,15 @@ Yields:
   'nav-up',
   'nav-up-left',
   'nav-up-right',
+  'pathLength',
   'r',
   'requiredExtensions',
   'requiredFeatures',
   'requiredFonts',
   'requiredFormats',
-  'systemLanguage',
-  'transform',
-  'alignment-baseline',
-  'externalResourcesRequired',
   'style',
-  'pathLength' ]
+  'systemLanguage',
+  'transform' ]
 ```
 
 ## API
