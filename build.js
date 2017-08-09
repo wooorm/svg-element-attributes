@@ -1,9 +1,14 @@
 'use strict';
 
 var fs = require('fs');
-var JSDOM = require('jsdom').JSDOM;
+var https = require('https');
 var bail = require('bail');
+var concat = require('concat-stream');
 var alphaSort = require('alpha-sort');
+var unified = require('unified');
+var parse = require('rehype-parse');
+var q = require('hast-util-select');
+var toString = require('hast-util-to-string');
 var ev = require('hast-util-is-event-handler');
 
 var actual = 0;
@@ -12,81 +17,78 @@ var expected = 3;
 var all = {};
 
 /* Crawl SVG 1.1. */
-JSDOM.fromURL('https://www.w3.org/TR/SVG/attindex.html').then(function (dom) {
-  var map = {};
-  var rows = dom.window.document.querySelectorAll('.property-table tr');
-  var position = -1;
-  var length = rows.length;
-  var node;
-  var name;
-  var elements;
+https.get('https://www.w3.org/TR/SVG/attindex.html', function (res) {
+  res.pipe(concat(onconcat)).on('error', bail);
 
-  while (++position < length) {
-    node = rows[position];
-    name = node.querySelector('.attr-name');
-    elements = node.querySelectorAll('.element-name');
+  function onconcat(buf) {
+    var tree = unified().use(parse).parse(buf);
+    var map = {};
 
-    if (!name || elements.length === 0) {
-      continue;
+    q.selectAll('.property-table tr', tree).forEach(each);
+
+    done(map);
+
+    function each(node) {
+      var name = q.select('.attr-name', node);
+
+      if (name) {
+        q
+          .selectAll('.element-name', node)
+          .map(toString)
+          .map(clean)
+          .forEach(add(map, clean(toString(name))));
+      }
     }
 
-    elements = [].map.call(elements, clean).forEach(add(map, clean(name)));
-  }
-
-  done(map);
-
-  function clean(node) {
-    return node.textContent.replace(/[‘’]/g, '');
+    function clean(value) {
+      return value.replace(/[‘’]/g, '');
+    }
   }
 });
 
 /* Crawl SVG Tiny 1.2. */
-JSDOM.fromURL('https://www.w3.org/TR/SVGTiny12/attributeTable.html').then(function (dom) {
-  var map = {};
-  var rows = dom.window.document.querySelectorAll('#attributes .attribute');
-  var position = 0;
-  var length = rows.length;
-  var name;
-  var elements;
+https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', function (res) {
+  res.pipe(concat(onconcat)).on('error', bail);
 
-  while (++position < length) {
-    name = clean(rows[position].querySelector('.attribute-name'));
-    elements = rows[position].querySelectorAll('.element');
-    elements = [].map.call(elements, clean).forEach(add(map, name));
-  }
+  function onconcat(buf) {
+    var tree = unified().use(parse).parse(buf);
+    var map = {};
 
-  done(map);
+    q.selectAll('#attributes .attribute', tree).forEach(each);
 
-  function clean(node) {
-    return node.textContent;
+    done(map);
+
+    function each(node) {
+      q
+        .selectAll('.element', node)
+        .map(toString)
+        .forEach(add(map, toString(q.select('.attribute-name', node))));
+    }
   }
 });
 
 /* Crawl SVG 2. */
-JSDOM.fromURL('https://www.w3.org/TR/SVG2/attindex.html').then(function (dom) {
-  var map = {};
-  var heading = dom.window.document.getElementById('RegularAttributes');
-  var table = heading.nextElementSibling.nextElementSibling;
-  var rows = table.querySelectorAll('tbody tr');
-  var position = 0;
-  var length = rows.length;
-  var name;
-  var elements;
+https.get('https://www.w3.org/TR/SVG2/attindex.html', function (res) {
+  res.pipe(concat(onconcat)).on('error', bail);
 
-  while (++position < length) {
-    name = clean(rows[position].querySelector('.attr-name span'));
-    elements = rows[position].querySelectorAll('.element-name span');
-    elements = [].map.call(elements, clean).forEach(add(map, name));
-  }
+  function onconcat(buf) {
+    var tree = unified().use(parse).parse(buf);
+    var map = {};
 
-  done(map);
+    q.selectAll('tbody tr', tree).forEach(each);
 
-  function clean(node) {
-    return node.textContent;
+    done(map);
+
+    function each(node) {
+      q
+        .selectAll('.element-name span', node)
+        .map(toString)
+        .forEach(add(map, toString(q.select('.attr-name span', node))));
+    }
   }
 });
 
-/* Add a map. */
+// /* Add a map. */
 function done(map) {
   merge(all, clean(map));
   cleanAll(all);
@@ -177,15 +179,16 @@ function clean(map) {
 }
 
 function merge(left, right) {
-  Object.keys(right)
-    .forEach(function (tagName) {
-      left[tagName] = (left[tagName] || [])
-        .concat(right[tagName])
-        .filter(function (attribute, index, list) {
-          return list.indexOf(attribute) === index;
-        })
-        .sort();
-    });
+  Object.keys(right).forEach(each);
+
+  function each(tagName) {
+    left[tagName] = (left[tagName] || [])
+      .concat(right[tagName])
+      .filter(function (attribute, index, list) {
+        return list.indexOf(attribute) === index;
+      })
+      .sort();
+  }
 }
 
 function cleanAll(map) {
