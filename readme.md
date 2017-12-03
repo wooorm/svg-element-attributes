@@ -73,10 +73,10 @@ Yields:
 ### `svgElementAttributes`
 
 `Object.<Array.<string>>` — Map of lower-case tag-names to an array of
-lower-case attribute names.
+attribute names.
 
 The object contains one special key: `'*'`, which contains global
-attributes which apply to all SVG elements.
+attributes that apply to all SVG elements.
 
 ## License
 
