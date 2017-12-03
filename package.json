@@ -12,7 +12,7 @@
     "property",
     "w3c"
   ],
-  "repository": "https://github.com/wooorm/svg-element-attributes",
+  "repository": "wooorm/svg-element-attributes",
   "bugs": "https://github.com/wooorm/svg-element-attributes/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
