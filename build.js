@@ -29,11 +29,12 @@ https.get('https://www.w3.org/TR/SVG/attindex.html', function (res) {
     done(map);
 
     function each(node) {
-      var name = q.select('.attr-name', node);
+      var elements = q.selectAll('.element-name', node);
 
-      if (name) {
-        q
-          .selectAll('.element-name', node)
+      q.selectAll('.attr-name', node).forEach(every);
+
+      function every(name) {
+        elements
           .map(toString)
           .map(clean)
           .forEach(add(map, clean(toString(name))));
