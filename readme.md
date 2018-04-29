@@ -20,10 +20,10 @@ npm install svg-element-attributes
 ## Usage
 
 ```javascript
-var svgElementAttributes = require('svg-element-attributes');
+var svgElementAttributes = require('svg-element-attributes')
 
-console.log(svgElementAttributes['*']);
-console.log(svgElementAttributes.circle);
+console.log(svgElementAttributes['*'])
+console.log(svgElementAttributes.circle)
 ```
 
 Yields:
