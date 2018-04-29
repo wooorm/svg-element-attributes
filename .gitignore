@@ -3,3 +3,4 @@
 node_modules/
 svg-element-attributes.js
 svg-element-attributes.min.js
+yarn.lock
