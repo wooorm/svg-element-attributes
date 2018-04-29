@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var test = require('tape');
-var svgElementAttributes = require('./');
+var svgElementAttributes = require('.');
 
 test('svgElementAttributes', function (t) {
   t.equal(

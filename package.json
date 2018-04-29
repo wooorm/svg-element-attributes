@@ -26,18 +26,18 @@
   "devDependencies": {
     "alpha-sort": "^2.0.1",
     "bail": "^1.0.0",
-    "browserify": "^14.1.0",
+    "browserify": "^16.0.0",
     "concat-stream": "^1.6.0",
     "esmangle": "^1.0.1",
     "hast-util-is-event-handler": "^1.0.0",
     "hast-util-select": "^1.0.1",
     "hast-util-to-string": "^1.0.1",
     "rehype-parse": "^4.0.0",
-    "remark-cli": "^4.0.0",
-    "remark-preset-wooorm": "^3.0.0",
+    "remark-cli": "^5.0.0",
+    "remark-preset-wooorm": "^4.0.0",
     "tape": "^4.4.0",
     "unified": "^6.1.5",
-    "xo": "^0.18.0"
+    "xo": "^0.20.0"
   },
   "scripts": {
     "build-md": "remark . -qfo",
@@ -52,6 +52,10 @@
   "xo": {
     "space": true,
     "esnext": false,
+    "rules": {
+      "no-var": "off",
+      "prefer-arrow-callback": "off"
+    },
     "ignores": [
       "svg-element-attributes.js"
     ]
