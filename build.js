@@ -28,8 +28,13 @@ function onsvg1(res) {
   function onconcat(buf) {
     var tree = proc.parse(buf)
     var map = {}
+    var nodes = q.selectAll('.property-table tr', tree)
 
-    q.selectAll('.property-table tr', tree).forEach(each)
+    if (nodes.length === 0) {
+      throw new Error('Couldn’t find rows in SVG 1')
+    }
+
+    nodes.forEach(each)
 
     done(map)
 
@@ -58,14 +63,18 @@ function ontiny(res) {
   function onconcat(buf) {
     var tree = proc.parse(buf)
     var map = {}
+    var nodes = q.selectAll('#attributes .attribute', tree)
 
-    q.selectAll('#attributes .attribute', tree).forEach(each)
+    if (nodes.length === 0) {
+      throw new Error('Couldn’t find nodes in SVG Tiny')
+    }
+
+    nodes.forEach(each)
 
     done(map)
 
     function each(node) {
-      q
-        .selectAll('.element', node)
+      q.selectAll('.element', node)
         .map(toString)
         .forEach(add(map, toString(q.select('.attribute-name', node))))
     }
@@ -78,14 +87,18 @@ function onsvg2(res) {
   function onconcat(buf) {
     var tree = proc.parse(buf)
     var map = {}
+    var nodes = q.selectAll('tbody tr', tree)
 
-    q.selectAll('tbody tr', tree).forEach(each)
+    if (nodes.length === 0) {
+      throw new Error('Couldn’t find nodes in SVG 2')
+    }
+
+    nodes.forEach(each)
 
     done(map)
 
     function each(node) {
-      q
-        .selectAll('.element-name span', node)
+      q.selectAll('.element-name span', node)
         .map(toString)
         .forEach(add(map, toString(q.select('.attr-name span', node))))
     }
