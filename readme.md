@@ -150,7 +150,7 @@ attributes that apply to all SVG elements.
 
 [license]: license
 
-[author]: http://wooorm.com
+[author]: https://wooorm.com
 
 [1.1]: https://www.w3.org/TR/SVG/attindex.html
 
