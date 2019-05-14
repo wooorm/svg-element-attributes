@@ -42,7 +42,7 @@
   },
   "scripts": {
     "generate": "node build",
-    "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
     "build-bundle": "browserify index.json --bare -s svgElementAttributes > svg-element-attributes.js",
     "build-mangle": "esmangle svg-element-attributes.js > svg-element-attributes.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
