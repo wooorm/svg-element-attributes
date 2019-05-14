@@ -1,4 +1,8 @@
-# svg-element-attributes [![Build Status][build-badge]][build-page]
+# svg-element-attributes
+
+[![Build][build-badge]][build]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 
 Map of SVG elements to allowed attributes.  Also contains global
 attributes under `'*'`.
@@ -144,7 +148,15 @@ attributes that apply to all SVG elements.
 
 [build-badge]: https://img.shields.io/travis/wooorm/svg-element-attributes.svg
 
-[build-page]: https://travis-ci.org/wooorm/svg-element-attributes
+[build]: https://travis-ci.org/wooorm/svg-element-attributes
+
+[downloads-badge]: https://img.shields.io/npm/dm/svg-element-attributes.svg
+
+[downloads]: https://www.npmjs.com/package/svg-element-attributes
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/svg-element-attributes.svg
+
+[size]: https://bundlephobia.com/result?p=svg-element-attributes
 
 [npm]: https://docs.npmjs.com/cli/install
 
