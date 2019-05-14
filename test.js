@@ -20,7 +20,7 @@ test('svgElementAttributes', function(t) {
       props.forEach(function(prop) {
         var label = prop + ' in ' + name
         assert.ok(typeof prop, 'string', label + ' should be string')
-        assert.equal(prop, prop.trim(), label + ' should be trimmed')
+        assert.strictEqual(prop, prop.trim(), label + ' should be trimmed')
         assert.ok(/^[a-z][a-z0-9-]*$/i.test(prop), label + ' should be `a-z-`')
       })
     })

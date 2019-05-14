@@ -224,7 +224,7 @@ function sort(map) {
   var result = {}
 
   Object.keys(map)
-    .sort(alphaSort.asc)
+    .sort(alphaSort.ascending)
     .forEach(function(key) {
       result[key] = map[key]
     })
