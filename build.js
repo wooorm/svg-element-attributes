@@ -18,7 +18,7 @@ var expected = 3
 
 var all = {}
 
-https.get('https://www.w3.org/TR/SVG/attindex.html', onsvg1)
+https.get('https://www.w3.org/TR/SVG11/attindex.html', onsvg1)
 https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', ontiny)
 https.get('https://www.w3.org/TR/SVG2/attindex.html', onsvg2)
 
