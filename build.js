@@ -105,7 +105,7 @@ function onsvg2(res) {
   }
 }
 
-/* Add a map. */
+// Add a map.
 function done(map) {
   merge(all, clean(map))
   cleanAll(all)
@@ -147,7 +147,7 @@ function clean(map) {
   var list = []
   var globals = []
 
-  /* Find all used attributes. */
+  // Find all used attributes.
   Object.keys(map).forEach(function(tagName) {
     map[tagName].forEach(function(attribute) {
       if (list.indexOf(attribute) === -1) {
@@ -156,7 +156,7 @@ function clean(map) {
     })
   })
 
-  /* Find global attributes. */
+  // Find global attributes.
   list.forEach(function(attribute) {
     var global = true
     var key
@@ -173,7 +173,7 @@ function clean(map) {
     }
   })
 
-  /* Remove globals. */
+  // Remove globals.
   result = {
     '*': globals
   }
