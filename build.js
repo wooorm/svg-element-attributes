@@ -134,7 +134,7 @@ function add(map, name) {
   function fn(tagName) {
     var attributes = map[tagName] || (map[tagName] = [])
 
-    if (attributes.indexOf(name) === -1) {
+    if (!attributes.includes(name)) {
       attributes.push(name)
     }
   }
@@ -150,7 +150,7 @@ function clean(map) {
   // Find all used attributes.
   Object.keys(map).forEach(function(tagName) {
     map[tagName].forEach(function(attribute) {
-      if (list.indexOf(attribute) === -1) {
+      if (!list.includes(attribute)) {
         list.push(attribute)
       }
     })
@@ -162,7 +162,7 @@ function clean(map) {
     var key
 
     for (key in map) {
-      if (map[key].indexOf(attribute) === -1) {
+      if (!map[key].includes(attribute)) {
         global = false
         break
       }
@@ -183,7 +183,7 @@ function clean(map) {
     .forEach(function(tagName) {
       var attributes = map[tagName]
         .filter(function(attribute) {
-          return globals.indexOf(attribute) === -1
+          return !globals.includes(attribute)
         })
         .sort()
 
@@ -214,7 +214,7 @@ function cleanAll(map) {
   Object.keys(map).forEach(function(tagName) {
     if (tagName !== '*') {
       map[tagName] = map[tagName].filter(function(attribute) {
-        return globals.indexOf(attribute) === -1
+        return !globals.includes(attribute)
       })
     }
   })
