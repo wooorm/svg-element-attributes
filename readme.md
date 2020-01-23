@@ -4,26 +4,25 @@
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
-Map of SVG elements to allowed attributes.  Also contains global
-attributes under `'*'`.
+Map of SVG elements to allowed attributes.
+Also contains global attributes under `'*'`.
 
 Includes attributes from [SVG 1.1][1.1], [SVG Tiny 1.2][1.2], and [SVG 2][2.0].
 
-> **Note**: Does not include ARIA attributes (`role`, `aria-*`),
-> `xml:*` or `xlink:*` attributes, event attributes (`on*`), or
-> `ev:event`.
+> **Note**: Does not include ARIA attributes (`role`, `aria-*`), `xml:*` or
+> `xlink:*` attributes, event attributes (`on*`), or `ev:event`.
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install svg-element-attributes
 ```
 
-## Usage
+## Use
 
-```javascript
+```js
 var svgElementAttributes = require('svg-element-attributes')
 
 console.log(svgElementAttributes['*'])
@@ -134,10 +133,10 @@ Yields:
 
 ### `svgElementAttributes`
 
-`Object.<Array.<string>>` — Map of tag-names to an array of attribute names.
+`Object.<Array.<string>>` — Map of tag names to an array of attribute names.
 
-The object contains one special key: `'*'`, which contains global
-attributes that apply to all SVG elements.
+The object contains one special key: `'*'`, which contains global attributes
+that apply to all SVG elements.
 
 ## License
 
