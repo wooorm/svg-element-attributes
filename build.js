@@ -22,8 +22,8 @@ https.get('https://www.w3.org/TR/SVG11/attindex.html', onsvg1)
 https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', ontiny)
 https.get('https://www.w3.org/TR/SVG2/attindex.html', onsvg2)
 
-function onsvg1(res) {
-  res.pipe(concat(onconcat)).on('error', bail)
+function onsvg1(response) {
+  response.pipe(concat(onconcat)).on('error', bail)
 
   function onconcat(buf) {
     var tree = proc.parse(buf)
@@ -57,8 +57,8 @@ function onsvg1(res) {
   }
 }
 
-function ontiny(res) {
-  res.pipe(concat(onconcat)).on('error', bail)
+function ontiny(response) {
+  response.pipe(concat(onconcat)).on('error', bail)
 
   function onconcat(buf) {
     var tree = proc.parse(buf)
@@ -81,8 +81,8 @@ function ontiny(res) {
   }
 }
 
-function onsvg2(res) {
-  res.pipe(concat(onconcat)).on('error', bail)
+function onsvg2(response) {
+  response.pipe(concat(onconcat)).on('error', bail)
 
   function onconcat(buf) {
     var tree = proc.parse(buf)
@@ -148,8 +148,8 @@ function clean(map) {
   var globals = []
 
   // Find all used attributes.
-  Object.keys(map).forEach(function(tagName) {
-    map[tagName].forEach(function(attribute) {
+  Object.keys(map).forEach(function (tagName) {
+    map[tagName].forEach(function (attribute) {
       if (!list.includes(attribute)) {
         list.push(attribute)
       }
@@ -157,7 +157,7 @@ function clean(map) {
   })
 
   // Find global attributes.
-  list.forEach(function(attribute) {
+  list.forEach(function (attribute) {
     var global = true
     var key
 
@@ -180,14 +180,14 @@ function clean(map) {
 
   Object.keys(map)
     .sort()
-    .forEach(function(tagName) {
+    .forEach(function (tagName) {
       var attributes = map[tagName]
-        .filter(function(attribute) {
+        .filter(function (attribute) {
           return !globals.includes(attribute)
         })
         .sort()
 
-      if (attributes.length !== 0) {
+      if (attributes.length > 0) {
         result[tagName] = attributes
       }
     })
@@ -201,7 +201,7 @@ function merge(left, right) {
   function each(tagName) {
     left[tagName] = (left[tagName] || [])
       .concat(right[tagName])
-      .filter(function(attribute, index, list) {
+      .filter(function (attribute, index, list) {
         return list.indexOf(attribute) === index
       })
       .sort()
@@ -211,9 +211,9 @@ function merge(left, right) {
 function cleanAll(map) {
   var globals = map['*']
 
-  Object.keys(map).forEach(function(tagName) {
+  Object.keys(map).forEach(function (tagName) {
     if (tagName !== '*') {
-      map[tagName] = map[tagName].filter(function(attribute) {
+      map[tagName] = map[tagName].filter(function (attribute) {
         return !globals.includes(attribute)
       })
     }
@@ -225,7 +225,7 @@ function sort(map) {
 
   Object.keys(map)
     .sort(alphaSort.ascending)
-    .forEach(function(key) {
+    .forEach(function (key) {
       result[key] = map[key]
     })
 
