@@ -144,9 +144,9 @@ that apply to all SVG elements.
 
 <!-- Definition -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/svg-element-attributes.svg
+[build-badge]: https://github.com/wooorm/svg-element-attributes/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/wooorm/svg-element-attributes
+[build]: https://github.com/wooorm/svg-element-attributes/actions
 
 [downloads-badge]: https://img.shields.io/npm/dm/svg-element-attributes.svg
 
