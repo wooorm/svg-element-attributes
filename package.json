@@ -28,7 +28,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "alpha-sort": "^3.0.0",
+    "alpha-sort": "^4.0.0",
     "bail": "^1.0.0",
     "browserify": "^17.0.0",
     "concat-stream": "^2.0.0",
@@ -42,7 +42,7 @@
     "tape": "^5.0.0",
     "tinyify": "^3.0.0",
     "unified": "^9.0.0",
-    "xo": "^0.34.0"
+    "xo": "^0.37.0"
   },
   "scripts": {
     "generate": "node build",
@@ -68,7 +68,7 @@
       "svg-element-attributes.js"
     ],
     "rules": {
-      "unicorn/no-fn-reference-in-iterator": "off"
+      "unicorn/no-array-callback-reference": "off"
     }
   },
   "remarkConfig": {

@@ -4,7 +4,7 @@ var fs = require('fs')
 var https = require('https')
 var bail = require('bail')
 var concat = require('concat-stream')
-var alphaSort = require('alpha-sort')
+var alphaSort = require('alpha-sort')()
 var unified = require('unified')
 var parse = require('rehype-parse')
 var q = require('hast-util-select')
@@ -224,7 +224,7 @@ function sort(map) {
   var result = {}
 
   Object.keys(map)
-    .sort(alphaSort.ascending)
+    .sort(alphaSort)
     .forEach(function (key) {
       result[key] = map[key]
     })
