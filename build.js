@@ -5,27 +5,47 @@ import concat from 'concat-stream'
 import alphaSort from 'alpha-sort'
 import unified from 'unified'
 import parse from 'rehype-parse'
+// @ts-ignore Remove when types are added
 import q from 'hast-util-select'
+// @ts-ignore Remove when types are added
 import toString from 'hast-util-to-string'
+// @ts-ignore Remove when types are added
 import ev from 'hast-util-is-event-handler'
+
+/**
+ * @typedef {import('http').IncomingMessage} IncomingMessage
+ *
+ * @typedef {import('hast').Element} Element
+ *
+ * @typedef {Object.<string, Array.<string>>} Map
+ */
 
 var proc = unified().use(parse)
 
 var actual = 0
 var expected = 3
 
+/** @type {Map} */
 var all = {}
 
 https.get('https://www.w3.org/TR/SVG11/attindex.html', onsvg1)
 https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', ontiny)
 https.get('https://www.w3.org/TR/SVG2/attindex.html', onsvg2)
 
+/**
+ * @param {IncomingMessage} response
+ */
 function onsvg1(response) {
   response.pipe(concat(onconcat)).on('error', bail)
 
+  /**
+   * @param {Buffer} buf
+   */
   function onconcat(buf) {
     var tree = proc.parse(buf)
+    /** @type {Map} */
     var map = {}
+    /** @type {Element[]} */
     var nodes = q.selectAll('.property-table tr', tree)
 
     if (nodes.length === 0) {
@@ -36,11 +56,18 @@ function onsvg1(response) {
 
     done(map)
 
+    /**
+     * @param {Element} node
+     */
     function each(node) {
+      /** @type {Element[]} */
       var elements = q.selectAll('.element-name', node)
 
       q.selectAll('.attr-name', node).forEach(every)
 
+      /**
+       * @param {string} name
+       */
       function every(name) {
         elements
           .map(toString)
@@ -49,18 +76,30 @@ function onsvg1(response) {
       }
     }
 
+    /**
+     * @param {string} value
+     * @returns {string}
+     */
     function clean(value) {
       return value.replace(/[‘’]/g, '')
     }
   }
 }
 
+/**
+ * @param {IncomingMessage} response
+ */
 function ontiny(response) {
   response.pipe(concat(onconcat)).on('error', bail)
 
+  /**
+   * @param {Buffer} buf
+   */
   function onconcat(buf) {
     var tree = proc.parse(buf)
+    /** @type {Map} */
     var map = {}
+    /** @type {Element[]} */
     var nodes = q.selectAll('#attributes .attribute', tree)
 
     if (nodes.length === 0) {
@@ -71,20 +110,34 @@ function ontiny(response) {
 
     done(map)
 
+    /**
+     * @param {Element} node
+     */
     function each(node) {
-      q.selectAll('.element', node)
+      /** @type {Element[]} */
+      var all = q.selectAll('.element', node)
+
+      all
         .map(toString)
         .forEach(add(map, toString(q.select('.attribute-name', node))))
     }
   }
 }
 
+/**
+ * @param {IncomingMessage} response
+ */
 function onsvg2(response) {
   response.pipe(concat(onconcat)).on('error', bail)
 
+  /**
+   * @param {Buffer} buf
+   */
   function onconcat(buf) {
     var tree = proc.parse(buf)
+    /** @type {Map} */
     var map = {}
+    /** @type {Element[]} */
     var nodes = q.selectAll('tbody tr', tree)
 
     if (nodes.length === 0) {
@@ -95,15 +148,25 @@ function onsvg2(response) {
 
     done(map)
 
+    /**
+     * @param {Element} node
+     */
     function each(node) {
-      q.selectAll('.element-name span', node)
+      /** @type {Element[]} */
+      var all = q.selectAll('.element-name span', node)
+
+      all
         .map(toString)
         .forEach(add(map, toString(q.select('.attr-name span', node))))
     }
   }
 }
 
-// Add a map.
+/**
+ * Add a map.
+ *
+ * @param {Map} map
+ */
 function done(map) {
   merge(all, clean(map))
   cleanAll(all)
@@ -121,6 +184,12 @@ function done(map) {
   }
 }
 
+/**
+ * Add to a map.
+ *
+ * @param {Map} map
+ * @param {string} name Attribute name
+ */
 function add(map, name) {
   if (
     ev(name) ||
@@ -135,6 +204,9 @@ function add(map, name) {
 
   return fn
 
+  /**
+   * @param {string} tagName Element name
+   */
   function fn(tagName) {
     var attributes = map[tagName] || (map[tagName] = [])
 
@@ -146,9 +218,16 @@ function add(map, name) {
   function noop() {}
 }
 
+/**
+ * @param {Map} map
+ * @returns {Map}
+ */
 function clean(map) {
+  /** @type {Map} */
   var result = {}
+  /** @type {Array.<string>} */
   var list = []
+  /** @type {Array.<string>} */
   var globals = []
 
   // Find all used attributes.
@@ -163,6 +242,7 @@ function clean(map) {
   // Find global attributes.
   list.forEach(function (attribute) {
     var global = true
+    /** @type {string} */
     var key
 
     for (key in map) {
@@ -199,9 +279,16 @@ function clean(map) {
   return result
 }
 
+/**
+ * @param {Map} left
+ * @param {Map} right
+ */
 function merge(left, right) {
   Object.keys(right).forEach(each)
 
+  /**
+   * @param {string} tagName
+   */
   function each(tagName) {
     left[tagName] = (left[tagName] || [])
       .concat(right[tagName])
@@ -212,6 +299,9 @@ function merge(left, right) {
   }
 }
 
+/**
+ * @param {Map} map
+ */
 function cleanAll(map) {
   var globals = map['*']
 
@@ -224,7 +314,12 @@ function cleanAll(map) {
   })
 }
 
+/**
+ * @param {Map} map
+ * @returns {Map}
+ */
 function sort(map) {
+  /** @type {Map} */
   var result = {}
 
   Object.keys(map)
