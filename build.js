@@ -1,15 +1,13 @@
-'use strict'
-
-var fs = require('fs')
-var https = require('https')
-var bail = require('bail')
-var concat = require('concat-stream')
-var alphaSort = require('alpha-sort')()
-var unified = require('unified')
-var parse = require('rehype-parse')
-var q = require('hast-util-select')
-var toString = require('hast-util-to-string')
-var ev = require('hast-util-is-event-handler')
+import fs from 'fs'
+import https from 'https'
+import {bail} from 'bail'
+import concat from 'concat-stream'
+import alphaSort from 'alpha-sort'
+import unified from 'unified'
+import parse from 'rehype-parse'
+import q from 'hast-util-select'
+import toString from 'hast-util-to-string'
+import ev from 'hast-util-is-event-handler'
 
 var proc = unified().use(parse)
 
@@ -113,7 +111,13 @@ function done(map) {
   actual++
 
   if (actual === expected) {
-    fs.writeFile('index.json', JSON.stringify(sort(all), 0, 2) + '\n', bail)
+    fs.writeFile(
+      'index.js',
+      'export var svgElementAttributes = ' +
+        JSON.stringify(sort(all), null, 2) +
+        '\n',
+      bail
+    )
   }
 }
 
@@ -224,7 +228,7 @@ function sort(map) {
   var result = {}
 
   Object.keys(map)
-    .sort(alphaSort)
+    .sort(alphaSort())
     .forEach(function (key) {
       result[key] = map[key]
     })

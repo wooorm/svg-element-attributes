@@ -1,8 +1,6 @@
-'use strict'
-
-var assert = require('assert')
-var test = require('tape')
-var svgElementAttributes = require('.')
+import assert from 'assert'
+import test from 'tape'
+import {svgElementAttributes} from './index.js'
 
 test('svgElementAttributes', function (t) {
   t.equal(typeof svgElementAttributes, 'object', 'should be an `object`')

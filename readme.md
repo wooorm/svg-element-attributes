@@ -1,6 +1,7 @@
 # svg-element-attributes
 
 [![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
@@ -14,6 +15,9 @@ Includes attributes from [SVG 1.1][1.1], [SVG Tiny 1.2][1.2], and [SVG 2][2.0].
 
 ## Install
 
+This package is ESM only: Node 12+ is needed to use it and it must be `import`ed
+instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -23,7 +27,7 @@ npm install svg-element-attributes
 ## Use
 
 ```js
-var svgElementAttributes = require('svg-element-attributes')
+import {svgElementAttributes} from 'svg-element-attributes'
 
 console.log(svgElementAttributes['*'])
 console.log(svgElementAttributes.circle)
@@ -32,7 +36,8 @@ console.log(svgElementAttributes.circle)
 Yields:
 
 ```js
-[ 'about',
+[
+  'about',
   'class',
   'content',
   'datatype',
@@ -44,84 +49,13 @@ Yields:
   'rev',
   'tabindex',
   'typeof' ]
-[ 'alignment-baseline',
+[
+  'alignment-baseline',
   'baseline-shift',
   'clip',
   'clip-path',
   'clip-rule',
-  'color',
-  'color-interpolation',
-  'color-interpolation-filters',
-  'color-profile',
-  'color-rendering',
-  'cursor',
-  'cx',
-  'cy',
-  'direction',
-  'display',
-  'dominant-baseline',
-  'enable-background',
-  'externalResourcesRequired',
-  'fill',
-  'fill-opacity',
-  'fill-rule',
-  'filter',
-  'flood-color',
-  'flood-opacity',
-  'focusHighlight',
-  'focusable',
-  'font-family',
-  'font-size',
-  'font-size-adjust',
-  'font-stretch',
-  'font-style',
-  'font-variant',
-  'font-weight',
-  'glyph-orientation-horizontal',
-  'glyph-orientation-vertical',
-  'image-rendering',
-  'kerning',
-  'letter-spacing',
-  'lighting-color',
-  'marker-end',
-  'marker-mid',
-  'marker-start',
-  'mask',
-  'nav-down',
-  'nav-down-left',
-  'nav-down-right',
-  'nav-left',
-  'nav-next',
-  'nav-prev',
-  'nav-right',
-  'nav-up',
-  'nav-up-left',
-  'nav-up-right',
-  'opacity',
-  'overflow',
-  'pathLength',
-  'pointer-events',
-  'r',
-  'requiredExtensions',
-  'requiredFeatures',
-  'requiredFonts',
-  'requiredFormats',
-  'shape-rendering',
-  'stop-color',
-  'stop-opacity',
-  'stroke',
-  'stroke-dasharray',
-  'stroke-dashoffset',
-  'stroke-linecap',
-  'stroke-linejoin',
-  'stroke-miterlimit',
-  'stroke-opacity',
-  'stroke-width',
-  'style',
-  'systemLanguage',
-  'text-anchor',
-  'text-decoration',
-  'text-rendering',
+  // …
   'transform',
   'unicode-bidi',
   'visibility',
@@ -130,6 +64,9 @@ Yields:
 ```
 
 ## API
+
+This package exports the following identifiers: `svgElementAttributes`.
+There is no default export.
 
 ### `svgElementAttributes`
 
@@ -147,6 +84,10 @@ that apply to all SVG elements.
 [build-badge]: https://github.com/wooorm/svg-element-attributes/workflows/main/badge.svg
 
 [build]: https://github.com/wooorm/svg-element-attributes/actions
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/svg-element-attributes.svg
+
+[coverage]: https://codecov.io/github/wooorm/svg-element-attributes
 
 [downloads-badge]: https://img.shields.io/npm/dm/svg-element-attributes.svg
 
