@@ -26,7 +26,6 @@
   "files": [
     "index.json"
   ],
-  "dependencies": {},
   "devDependencies": {
     "alpha-sort": "^4.0.0",
     "bail": "^1.0.0",
@@ -42,7 +41,7 @@
     "tape": "^5.0.0",
     "tinyify": "^3.0.0",
     "unified": "^9.0.0",
-    "xo": "^0.37.0"
+    "xo": "^0.38.0"
   },
   "scripts": {
     "generate": "node build",
@@ -68,6 +67,7 @@
       "svg-element-attributes.js"
     ],
     "rules": {
+      "unicorn/no-array-for-each": "off",
       "unicorn/no-array-callback-reference": "off"
     }
   },
