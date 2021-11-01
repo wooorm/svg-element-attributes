@@ -1,4 +1,4 @@
-export var svgElementAttributes = {
+export const svgElementAttributes = {
   '*': [
     'about',
     'class',

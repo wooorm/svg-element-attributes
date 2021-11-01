@@ -1,16 +1,13 @@
-import fs from 'fs'
-import https from 'https'
+import fs from 'node:fs'
+import https from 'node:https'
 import {bail} from 'bail'
 import concat from 'concat-stream'
 import alphaSort from 'alpha-sort'
-import unified from 'unified'
+import {unified} from 'unified'
 import parse from 'rehype-parse'
-// @ts-ignore Remove when types are added
-import q from 'hast-util-select'
-// @ts-ignore Remove when types are added
-import toString from 'hast-util-to-string'
-// @ts-ignore Remove when types are added
-import ev from 'hast-util-is-event-handler'
+import {select, selectAll} from 'hast-util-select'
+import {toString} from 'hast-util-to-string'
+import {isEventHandler} from 'hast-util-is-event-handler'
 
 /**
  * @typedef {import('http').IncomingMessage} IncomingMessage
@@ -20,13 +17,13 @@ import ev from 'hast-util-is-event-handler'
  * @typedef {Object.<string, Array.<string>>} Map
  */
 
-var proc = unified().use(parse)
+const proc = unified().use(parse)
 
-var actual = 0
-var expected = 3
+let actual = 0
+const expected = 3
 
 /** @type {Map} */
-var all = {}
+const all = {}
 
 https.get('https://www.w3.org/TR/SVG11/attindex.html', onsvg1)
 https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', ontiny)
@@ -42,11 +39,11 @@ function onsvg1(response) {
    * @param {Buffer} buf
    */
   function onconcat(buf) {
-    var tree = proc.parse(buf)
+    const tree = proc.parse(buf)
     /** @type {Map} */
-    var map = {}
+    const map = {}
     /** @type {Element[]} */
-    var nodes = q.selectAll('.property-table tr', tree)
+    const nodes = selectAll('.property-table tr', tree)
 
     if (nodes.length === 0) {
       throw new Error('Couldn’t find rows in SVG 1')
@@ -61,19 +58,14 @@ function onsvg1(response) {
      */
     function each(node) {
       /** @type {Element[]} */
-      var elements = q.selectAll('.element-name', node)
+      const elements = selectAll('.element-name', node)
 
-      q.selectAll('.attr-name', node).forEach(every)
-
-      /**
-       * @param {string} name
-       */
-      function every(name) {
+      selectAll('.attr-name', node).forEach((name) => {
         elements
           .map(toString)
           .map(clean)
           .forEach(add(map, clean(toString(name))))
-      }
+      })
     }
 
     /**
@@ -96,11 +88,11 @@ function ontiny(response) {
    * @param {Buffer} buf
    */
   function onconcat(buf) {
-    var tree = proc.parse(buf)
+    const tree = proc.parse(buf)
     /** @type {Map} */
-    var map = {}
+    const map = {}
     /** @type {Element[]} */
-    var nodes = q.selectAll('#attributes .attribute', tree)
+    const nodes = selectAll('#attributes .attribute', tree)
 
     if (nodes.length === 0) {
       throw new Error('Couldn’t find nodes in SVG Tiny')
@@ -115,11 +107,11 @@ function ontiny(response) {
      */
     function each(node) {
       /** @type {Element[]} */
-      var all = q.selectAll('.element', node)
+      const all = selectAll('.element', node)
 
       all
         .map(toString)
-        .forEach(add(map, toString(q.select('.attribute-name', node))))
+        .forEach(add(map, toString(select('.attribute-name', node))))
     }
   }
 }
@@ -134,11 +126,11 @@ function onsvg2(response) {
    * @param {Buffer} buf
    */
   function onconcat(buf) {
-    var tree = proc.parse(buf)
+    const tree = proc.parse(buf)
     /** @type {Map} */
-    var map = {}
+    const map = {}
     /** @type {Element[]} */
-    var nodes = q.selectAll('tbody tr', tree)
+    const nodes = selectAll('tbody tr', tree)
 
     if (nodes.length === 0) {
       throw new Error('Couldn’t find nodes in SVG 2')
@@ -153,11 +145,11 @@ function onsvg2(response) {
      */
     function each(node) {
       /** @type {Element[]} */
-      var all = q.selectAll('.element-name span', node)
+      const all = selectAll('.element-name span', node)
 
       all
         .map(toString)
-        .forEach(add(map, toString(q.select('.attr-name span', node))))
+        .forEach(add(map, toString(select('.attr-name span', node))))
     }
   }
 }
@@ -176,7 +168,7 @@ function done(map) {
   if (actual === expected) {
     fs.writeFile(
       'index.js',
-      'export var svgElementAttributes = ' +
+      'export const svgElementAttributes = ' +
         JSON.stringify(sort(all), null, 2) +
         '\n',
       bail
@@ -192,7 +184,7 @@ function done(map) {
  */
 function add(map, name) {
   if (
-    ev(name) ||
+    isEventHandler(name) ||
     name === 'role' ||
     name.slice(0, 5) === 'aria-' ||
     name.slice(0, 3) === 'ev:' ||
@@ -208,7 +200,7 @@ function add(map, name) {
    * @param {string} tagName Element name
    */
   function fn(tagName) {
-    var attributes = map[tagName] || (map[tagName] = [])
+    const attributes = map[tagName] || (map[tagName] = [])
 
     if (!attributes.includes(name)) {
       attributes.push(name)
@@ -224,11 +216,11 @@ function add(map, name) {
  */
 function clean(map) {
   /** @type {Map} */
-  var result = {}
+  let result = {}
   /** @type {Array.<string>} */
-  var list = []
+  const list = []
   /** @type {Array.<string>} */
-  var globals = []
+  const globals = []
 
   // Find all used attributes.
   Object.keys(map).forEach(function (tagName) {
@@ -241,9 +233,9 @@ function clean(map) {
 
   // Find global attributes.
   list.forEach(function (attribute) {
-    var global = true
+    let global = true
     /** @type {string} */
-    var key
+    let key
 
     for (key in map) {
       if (!map[key].includes(attribute)) {
@@ -265,7 +257,7 @@ function clean(map) {
   Object.keys(map)
     .sort()
     .forEach(function (tagName) {
-      var attributes = map[tagName]
+      const attributes = map[tagName]
         .filter(function (attribute) {
           return !globals.includes(attribute)
         })
@@ -303,7 +295,7 @@ function merge(left, right) {
  * @param {Map} map
  */
 function cleanAll(map) {
-  var globals = map['*']
+  const globals = map['*']
 
   Object.keys(map).forEach(function (tagName) {
     if (tagName !== '*') {
@@ -320,7 +312,7 @@ function cleanAll(map) {
  */
 function sort(map) {
   /** @type {Map} */
-  var result = {}
+  const result = {}
 
   Object.keys(map)
     .sort(alphaSort())

@@ -1,4 +1,4 @@
-import assert from 'assert'
+import assert from 'node:assert'
 import test from 'tape'
 import {svgElementAttributes} from './index.js'
 
@@ -13,10 +13,10 @@ test('svgElementAttributes', function (t) {
 
   t.doesNotThrow(function () {
     for (const name of Object.keys(svgElementAttributes)) {
-      var props = svgElementAttributes[name]
+      const props = svgElementAttributes[name]
 
       for (const prop of props) {
-        var label = prop + ' in ' + name
+        const label = prop + ' in ' + name
         assert.strictEqual(typeof prop, 'string', label + ' should be string')
         assert.strictEqual(prop, prop.trim(), label + ' should be trimmed')
         assert.ok(/^[a-z][a-z\d-]*$/i.test(prop), label + ' should be `a-z-`')
