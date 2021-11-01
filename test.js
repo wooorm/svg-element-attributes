@@ -2,27 +2,52 @@ import assert from 'node:assert'
 import test from 'tape'
 import {svgElementAttributes} from './index.js'
 
+const own = {}.hasOwnProperty
+
 test('svgElementAttributes', function (t) {
   t.equal(typeof svgElementAttributes, 'object', 'should be an `object`')
 
   t.doesNotThrow(function () {
-    for (const name of Object.keys(svgElementAttributes)) {
-      assert.ok(Array.isArray(svgElementAttributes[name]), name)
+    /** @type {string} */
+    let tagName
+
+    for (tagName in svgElementAttributes) {
+      if (own.call(svgElementAttributes, tagName)) {
+        assert.ok(Array.isArray(svgElementAttributes[tagName]), tagName)
+      }
     }
   }, 'values should be array')
 
   t.doesNotThrow(function () {
-    for (const name of Object.keys(svgElementAttributes)) {
-      const props = svgElementAttributes[name]
+    /** @type {string} */
+    let tagName
 
-      for (const prop of props) {
-        const label = prop + ' in ' + name
-        assert.strictEqual(typeof prop, 'string', label + ' should be string')
-        assert.strictEqual(prop, prop.trim(), label + ' should be trimmed')
-        assert.ok(/^[a-z][a-z\d-]*$/i.test(prop), label + ' should be `a-z-`')
+    for (tagName in svgElementAttributes) {
+      if (own.call(svgElementAttributes, tagName)) {
+        const attributes = svgElementAttributes[tagName]
+        let index = -1
+
+        while (++index < attributes.length) {
+          const attribute = attributes[index]
+          const label = attribute + ' in ' + tagName
+          assert.strictEqual(
+            typeof attribute,
+            'string',
+            label + ' should be string'
+          )
+          assert.strictEqual(
+            attribute,
+            attribute.trim(),
+            label + ' should be trimmed'
+          )
+          assert.ok(
+            /^[a-z][a-z\d-]*$/i.test(attribute),
+            label + ' should be `a-z-`'
+          )
+        }
       }
     }
-  }, 'name should be lower-case, alphabetical strings')
+  }, 'name should be lowercase, alphabetical strings')
 
   t.end()
 })

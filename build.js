@@ -2,323 +2,242 @@ import fs from 'node:fs'
 import https from 'node:https'
 import {bail} from 'bail'
 import concat from 'concat-stream'
-import alphaSort from 'alpha-sort'
 import {unified} from 'unified'
 import parse from 'rehype-parse'
 import {select, selectAll} from 'hast-util-select'
 import {toString} from 'hast-util-to-string'
 import {isEventHandler} from 'hast-util-is-event-handler'
 
-/**
- * @typedef {import('http').IncomingMessage} IncomingMessage
- *
- * @typedef {import('hast').Element} Element
- *
- * @typedef {Object.<string, Array.<string>>} Map
- */
+const processor = unified().use(parse)
 
-const proc = unified().use(parse)
+const own = {}.hasOwnProperty
 
-let actual = 0
 const expected = 3
 
-/** @type {Map} */
-const all = {}
+/** @type {Array<Record<string, Set<string>>>} */
+const maps = []
 
-https.get('https://www.w3.org/TR/SVG11/attindex.html', onsvg1)
-https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', ontiny)
-https.get('https://www.w3.org/TR/SVG2/attindex.html', onsvg2)
+https.get('https://www.w3.org/TR/SVG11/attindex.html', (response) => {
+  response
+    .pipe(
+      concat((buf) => {
+        /** @type {Record<string, Set<string>>} */
+        const map = {}
+        const tree = processor.parse(buf)
+        const rows = selectAll('.property-table tr', tree)
+        let index = -1
 
-/**
- * @param {IncomingMessage} response
- */
-function onsvg1(response) {
-  response.pipe(concat(onconcat)).on('error', bail)
+        if (rows.length === 0) {
+          throw new Error('Couldn’t find rows in SVG 1')
+        }
 
-  /**
-   * @param {Buffer} buf
-   */
-  function onconcat(buf) {
-    const tree = proc.parse(buf)
-    /** @type {Map} */
-    const map = {}
-    /** @type {Element[]} */
-    const nodes = selectAll('.property-table tr', tree)
+        while (++index < rows.length) {
+          const row = rows[index]
+          const attributes = selectAll('.attr-name', row)
+          const elements = selectAll('.element-name', row)
+          let elementIndex = -1
 
-    if (nodes.length === 0) {
-      throw new Error('Couldn’t find rows in SVG 1')
-    }
+          while (++elementIndex < elements.length) {
+            const element = toString(elements[elementIndex]).replace(
+              /[‘’]/g,
+              ''
+            )
+            let attributeIndex = -1
 
-    nodes.forEach(each)
+            if (!own.call(map, element)) {
+              map[element] = new Set()
+            }
 
-    done(map)
+            while (++attributeIndex < attributes.length) {
+              const attribute = toString(attributes[attributeIndex]).replace(
+                /[‘’]/g,
+                ''
+              )
+              map[element].add(attribute)
+            }
+          }
+        }
 
-    /**
-     * @param {Element} node
-     */
-    function each(node) {
-      /** @type {Element[]} */
-      const elements = selectAll('.element-name', node)
-
-      selectAll('.attr-name', node).forEach((name) => {
-        elements
-          .map(toString)
-          .map(clean)
-          .forEach(add(map, clean(toString(name))))
+        maps.push(map)
+        done()
       })
-    }
+    )
+    .on('error', bail)
+})
 
-    /**
-     * @param {string} value
-     * @returns {string}
-     */
-    function clean(value) {
-      return value.replace(/[‘’]/g, '')
-    }
-  }
-}
+https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', (response) => {
+  response
+    .pipe(
+      concat((buf) => {
+        /** @type {Record<string, Set<string>>} */
+        const map = {}
+        const tree = processor.parse(buf)
+        const rows = selectAll('#attributes .attribute', tree)
+        let index = -1
 
-/**
- * @param {IncomingMessage} response
- */
-function ontiny(response) {
-  response.pipe(concat(onconcat)).on('error', bail)
+        if (rows.length === 0) {
+          throw new Error('Couldn’t find nodes in SVG Tiny')
+        }
 
-  /**
-   * @param {Buffer} buf
-   */
-  function onconcat(buf) {
-    const tree = proc.parse(buf)
-    /** @type {Map} */
-    const map = {}
-    /** @type {Element[]} */
-    const nodes = selectAll('#attributes .attribute', tree)
+        while (++index < rows.length) {
+          const row = rows[index]
+          const attribute = toString(select('.attribute-name', row))
+          const elements = selectAll('.element', row)
+          let elementIndex = -1
 
-    if (nodes.length === 0) {
-      throw new Error('Couldn’t find nodes in SVG Tiny')
-    }
+          while (++elementIndex < elements.length) {
+            const element = toString(elements[elementIndex])
 
-    nodes.forEach(each)
+            if (!own.call(map, element)) {
+              map[element] = new Set()
+            }
 
-    done(map)
+            map[element].add(attribute)
+          }
+        }
 
-    /**
-     * @param {Element} node
-     */
-    function each(node) {
-      /** @type {Element[]} */
-      const all = selectAll('.element', node)
+        maps.push(map)
+        done()
+      })
+    )
+    .on('error', bail)
+})
 
-      all
-        .map(toString)
-        .forEach(add(map, toString(select('.attribute-name', node))))
-    }
-  }
-}
+https.get('https://www.w3.org/TR/SVG2/attindex.html', (response) => {
+  response
+    .pipe(
+      concat((buf) => {
+        /** @type {Record<string, Set<string>>} */
+        const map = {}
+        const tree = processor.parse(buf)
+        const rows = selectAll('tbody tr', tree)
+        let index = -1
 
-/**
- * @param {IncomingMessage} response
- */
-function onsvg2(response) {
-  response.pipe(concat(onconcat)).on('error', bail)
+        if (rows.length === 0) {
+          throw new Error('Couldn’t find rows in SVG 2')
+        }
 
-  /**
-   * @param {Buffer} buf
-   */
-  function onconcat(buf) {
-    const tree = proc.parse(buf)
-    /** @type {Map} */
-    const map = {}
-    /** @type {Element[]} */
-    const nodes = selectAll('tbody tr', tree)
+        while (++index < rows.length) {
+          const row = rows[index]
+          const attribute = toString(select('.attr-name span', row))
+          const elements = selectAll('.element-name span', row)
+          let elementIndex = -1
 
-    if (nodes.length === 0) {
-      throw new Error('Couldn’t find nodes in SVG 2')
-    }
+          while (++elementIndex < elements.length) {
+            const element = toString(elements[elementIndex])
 
-    nodes.forEach(each)
+            if (!own.call(map, element)) {
+              map[element] = new Set()
+            }
 
-    done(map)
+            map[element].add(attribute)
+          }
+        }
 
-    /**
-     * @param {Element} node
-     */
-    function each(node) {
-      /** @type {Element[]} */
-      const all = selectAll('.element-name span', node)
-
-      all
-        .map(toString)
-        .forEach(add(map, toString(select('.attr-name span', node))))
-    }
-  }
-}
+        maps.push(map)
+        done()
+      })
+    )
+    .on('error', bail)
+})
 
 /**
  * Add a map.
- *
- * @param {Map} map
  */
-function done(map) {
-  merge(all, clean(map))
-  cleanAll(all)
-
-  actual++
-
-  if (actual === expected) {
-    fs.writeFile(
-      'index.js',
-      'export const svgElementAttributes = ' +
-        JSON.stringify(sort(all), null, 2) +
-        '\n',
-      bail
-    )
-  }
-}
-
-/**
- * Add to a map.
- *
- * @param {Map} map
- * @param {string} name Attribute name
- */
-function add(map, name) {
-  if (
-    isEventHandler(name) ||
-    name === 'role' ||
-    name.slice(0, 5) === 'aria-' ||
-    name.slice(0, 3) === 'ev:' ||
-    name.slice(0, 4) === 'xml:' ||
-    name.slice(0, 6) === 'xlink:'
-  ) {
-    return noop
+function done() {
+  if (maps.length !== expected) {
+    return
   }
 
-  return fn
+  /** @type {Set<string>} */
+  const globals = new Set()
 
-  /**
-   * @param {string} tagName Element name
-   */
-  function fn(tagName) {
-    const attributes = map[tagName] || (map[tagName] = [])
-
-    if (!attributes.includes(name)) {
-      attributes.push(name)
-    }
-  }
-
-  function noop() {}
-}
-
-/**
- * @param {Map} map
- * @returns {Map}
- */
-function clean(map) {
-  /** @type {Map} */
-  let result = {}
-  /** @type {Array.<string>} */
-  const list = []
-  /** @type {Array.<string>} */
-  const globals = []
-
-  // Find all used attributes.
-  Object.keys(map).forEach(function (tagName) {
-    map[tagName].forEach(function (attribute) {
-      if (!list.includes(attribute)) {
-        list.push(attribute)
-      }
-    })
-  })
-
-  // Find global attributes.
-  list.forEach(function (attribute) {
-    let global = true
+  let index = -1
+  while (++index < maps.length) {
+    const map = maps[index]
+    /** @type {Set<string>} */
+    let all = new Set()
     /** @type {string} */
-    let key
+    let tagName
 
-    for (key in map) {
-      if (!map[key].includes(attribute)) {
-        global = false
-        break
+    // Ttrack all attributes.
+    for (tagName in map) {
+      if (own.call(map, tagName)) {
+        all = new Set([...all, ...map[tagName]])
       }
     }
 
-    if (global) {
-      globals.push(attribute)
-    }
-  })
+    // Figure out globals.
+    // We have to do this per map.
+    /** @type {string} */
+    let attribute
 
-  // Remove globals.
-  result = {
-    '*': globals
-  }
+    for (attribute of all) {
+      let global = true
 
-  Object.keys(map)
-    .sort()
-    .forEach(function (tagName) {
-      const attributes = map[tagName]
-        .filter(function (attribute) {
-          return !globals.includes(attribute)
-        })
-        .sort()
-
-      if (attributes.length > 0) {
-        result[tagName] = attributes
+      for (tagName in map) {
+        if (own.call(map, tagName) && !map[tagName].has(attribute)) {
+          global = false
+          break
+        }
       }
-    })
 
-  return result
-}
-
-/**
- * @param {Map} left
- * @param {Map} right
- */
-function merge(left, right) {
-  Object.keys(right).forEach(each)
-
-  /**
-   * @param {string} tagName
-   */
-  function each(tagName) {
-    left[tagName] = (left[tagName] || [])
-      .concat(right[tagName])
-      .filter(function (attribute, index, list) {
-        return list.indexOf(attribute) === index
-      })
-      .sort()
-  }
-}
-
-/**
- * @param {Map} map
- */
-function cleanAll(map) {
-  const globals = map['*']
-
-  Object.keys(map).forEach(function (tagName) {
-    if (tagName !== '*') {
-      map[tagName] = map[tagName].filter(function (attribute) {
-        return !globals.includes(attribute)
-      })
+      if (global) {
+        globals.add(attribute)
+      }
     }
-  })
-}
+  }
 
-/**
- * @param {Map} map
- * @returns {Map}
- */
-function sort(map) {
-  /** @type {Map} */
+  /** @type {Record<string, Set<string>>} */
+  const merged = {'*': globals}
+
+  index = -1
+  while (++index < maps.length) {
+    const map = maps[index]
+    /** @type {string} */
+    let tagName
+
+    for (tagName in map) {
+      if (own.call(map, tagName)) {
+        const existing = own.call(merged, tagName) ? [...merged[tagName]] : []
+        const list = [...map[tagName]].filter((d) => !globals.has(d))
+
+        merged[tagName] = new Set([...existing, ...list])
+      }
+    }
+  }
+
+  /** @type {Record<string, Array<string>>} */
   const result = {}
+  const keys = Object.keys(merged).sort()
+  /** @type {string} */
+  let tagName
 
-  Object.keys(map)
-    .sort(alphaSort())
-    .forEach(function (key) {
-      result[key] = map[key]
+  for (tagName of keys) {
+    const list = [...merged[tagName]]
+    result[tagName] = list.sort().filter((d) => {
+      return !(
+        isEventHandler(d) ||
+        d === 'role' ||
+        d.slice(0, 5) === 'aria-' ||
+        d.slice(0, 3) === 'ev:' ||
+        d.slice(0, 4) === 'xml:' ||
+        d.slice(0, 6) === 'xlink:'
+      )
     })
+  }
 
-  return result
+  fs.writeFile(
+    'index.js',
+    [
+      '/**',
+      ' * Map of SVG elements to allowed attributes.',
+      ' *',
+      ' * @type {Record<string, Array<string>>}',
+      ' */',
+      'export const svgElementAttributes = ' + JSON.stringify(result, null, 2),
+      ''
+    ].join('\n'),
+    bail
+  )
 }

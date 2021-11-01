@@ -1,3 +1,8 @@
+/**
+ * Map of SVG elements to allowed attributes.
+ *
+ * @type {Record<string, Array<string>>}
+ */
 export const svgElementAttributes = {
   '*': [
     'about',
@@ -173,6 +178,8 @@ export const svgElementAttributes = {
     'x',
     'y'
   ],
+  altGlyphDef: [],
+  altGlyphItem: [],
   animate: [
     'accumulate',
     'additive',
@@ -2143,6 +2150,7 @@ export const svgElementAttributes = {
   ],
   'font-face-format': ['string'],
   'font-face-name': ['name'],
+  'font-face-src': [],
   'font-face-uri': ['externalResourcesRequired'],
   foreignObject: [
     'alignment-baseline',
@@ -3424,6 +3432,7 @@ export const svgElementAttributes = {
     'systemLanguage',
     'to'
   ],
+  solidColor: [],
   stop: [
     'alignment-baseline',
     'baseline-shift',
