@@ -6,22 +6,60 @@
 [![Size][size-badge]][size]
 
 Map of SVG elements to allowed attributes.
-Also contains global attributes under `'*'`.
 
-Includes attributes from [SVG 1.1][1.1], [SVG Tiny 1.2][1.2], and [SVG 2][2.0].
+## Contents
 
-> **Note**: Does not include ARIA attributes (`role`, `aria-*`), `xml:*` or
-> `xlink:*` attributes, event attributes (`on*`), or `ev:event`.
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`svgElementAttributes`](#svgelementattributes)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This is a map of tag names to lists of allowed attributes.
+Global attributes are stored at the special tag name `*`.
+All attributes from [SVG 1.1][1.1], [SVG Tiny 1.2][1.2], and [SVG 2][2.0] are
+included.
+
+> 👉 **Note**: Includes deprecated attributes.
+
+> 👉 **Note**: ARIA (`role`, `aria-*`), event (`ev:event`, `on*`), or `xml:*`
+> and `xlink:*` attributes are not included.
+
+## When should I use this?
+
+You can use this to figure out if certain attributes are allowed on certain
+SVG elements.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 
 ```sh
 npm install svg-element-attributes
+```
+
+In Deno with [Skypack][]:
+
+```js
+import {svgElementAttributes} from 'https://cdn.skypack.dev/svg-element-attributes@2?dts'
+```
+
+In browsers with [Skypack][]:
+
+```html
+<script type="module">
+  import {svgElementAttributes} from 'https://cdn.skypack.dev/svg-element-attributes@2?min'
+</script>
 ```
 
 ## Use
@@ -70,10 +108,44 @@ There is no default export.
 
 ### `svgElementAttributes`
 
-`Object.<Array.<string>>` — Map of tag names to an array of attribute names.
+Map of lowercase SVG elements to allowed attributes
+(`Record<string, Array<string>>`).
 
-The object contains one special key: `'*'`, which contains global attributes
-that apply to all SVG elements.
+## Types
+
+This package is fully typed with [TypeScript][].
+
+## Compatibility
+
+This package is at least compatible with all maintained versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+It also works in Deno and modern browsers.
+
+## Security
+
+This package is safe.
+
+## Related
+
+*   [`wooorm/web-namespaces`](https://github.com/wooorm/web-namespaces)
+    — list of web namespaces
+*   [`wooorm/html-tag-names`](https://github.com/wooorm/html-tag-names)
+    — list of HTML tag names
+*   [`wooorm/mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
+    — list of MathML tag names
+*   [`wooorm/svg-tag-names`](https://github.com/wooorm/svg-tag-names)
+    — list of SVG tag names
+*   [`wooorm/html-void-elements`](https://github.com/wooorm/html-void-elements)
+    — list of void HTML tag names
+*   [`wooorm/html-element-attributes`](https://github.com/wooorm/html-element-attributes)
+    — map of HTML elements to attributes
+*   [`wooorm/aria-attributes`](https://github.com/wooorm/aria-attributes)
+    — list of ARIA attributes
+
+## Contribute
+
+Yes please!
+See [How to Contribute to Open Source][contribute].
 
 ## License
 
@@ -99,9 +171,17 @@ that apply to all SVG elements.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[skypack]: https://www.skypack.dev
+
 [license]: license
 
 [author]: https://wooorm.com
+
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[typescript]: https://www.typescriptlang.org
+
+[contribute]: https://opensource.guide/how-to-contribute/
 
 [1.1]: https://www.w3.org/TR/SVG/attindex.html
 
