@@ -1,14 +1,15 @@
 import fs from 'node:fs'
 import https from 'node:https'
 import {bail} from 'bail'
-import concat from 'concat-stream'
+import concatStream from 'concat-stream'
 import {unified} from 'unified'
-import parse from 'rehype-parse'
+import rehypeParse from 'rehype-parse'
+import {ariaAttributes} from 'aria-attributes'
 import {select, selectAll} from 'hast-util-select'
 import {toString} from 'hast-util-to-string'
 import {isEventHandler} from 'hast-util-is-event-handler'
 
-const processor = unified().use(parse)
+const processor = unified().use(rehypeParse)
 
 const own = {}.hasOwnProperty
 
@@ -20,7 +21,7 @@ const maps = []
 https.get('https://www.w3.org/TR/SVG11/attindex.html', (response) => {
   response
     .pipe(
-      concat((buf) => {
+      concatStream((buf) => {
         /** @type {Record<string, Set<string>>} */
         const map = {}
         const tree = processor.parse(buf)
@@ -68,7 +69,7 @@ https.get('https://www.w3.org/TR/SVG11/attindex.html', (response) => {
 https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', (response) => {
   response
     .pipe(
-      concat((buf) => {
+      concatStream((buf) => {
         /** @type {Record<string, Set<string>>} */
         const map = {}
         const tree = processor.parse(buf)
@@ -106,7 +107,7 @@ https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', (response) => {
 https.get('https://www.w3.org/TR/SVG2/attindex.html', (response) => {
   response
     .pipe(
-      concat((buf) => {
+      concatStream((buf) => {
         /** @type {Record<string, Set<string>>} */
         const map = {}
         const tree = processor.parse(buf)
@@ -216,13 +217,15 @@ function done() {
   for (tagName of keys) {
     const list = [...merged[tagName]]
     result[tagName] = list.sort().filter((d) => {
+      const pos = d.indexOf(':')
+      const ns = pos === -1 ? null : d.slice(0, pos)
+
       return !(
         isEventHandler(d) ||
-        d === 'role' ||
-        d.slice(0, 5) === 'aria-' ||
-        d.slice(0, 3) === 'ev:' ||
-        d.slice(0, 4) === 'xml:' ||
-        d.slice(0, 6) === 'xlink:'
+        ariaAttributes.includes(d) ||
+        ns === 'ev:' ||
+        ns === 'xml:' ||
+        ns === 'xlink:'
       )
     })
   }
