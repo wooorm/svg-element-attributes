@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import https from 'node:https'
 import {bail} from 'bail'
@@ -82,7 +83,9 @@ https.get('https://www.w3.org/TR/SVGTiny12/attributeTable.html', (response) => {
 
         while (++index < rows.length) {
           const row = rows[index]
-          const attribute = toString(select('.attribute-name', row))
+          const name = select('.attribute-name', row)
+          assert(name, 'expected `name`')
+          const attribute = toString(name)
           const elements = selectAll('.element', row)
           let elementIndex = -1
 
@@ -120,7 +123,9 @@ https.get('https://www.w3.org/TR/SVG2/attindex.html', (response) => {
 
         while (++index < rows.length) {
           const row = rows[index]
-          const attribute = toString(select('.attr-name span', row))
+          const name = select('.attr-name span', row)
+          assert(name, 'expected `name`')
+          const attribute = toString(name)
           const elements = selectAll('.element-name span', row)
           let elementIndex = -1
 
