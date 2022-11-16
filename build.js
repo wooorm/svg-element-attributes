@@ -228,9 +228,9 @@ function done() {
       return !(
         isEventHandler(d) ||
         ariaAttributes.includes(d) ||
-        ns === 'ev:' ||
-        ns === 'xml:' ||
-        ns === 'xlink:'
+        ns === 'ev' ||
+        ns === 'xml' ||
+        ns === 'xlink'
       )
     })
   }
