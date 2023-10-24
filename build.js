@@ -128,6 +128,9 @@ while (++index < rows2.length) {
   }
 }
 
+// GITHUB ISSUE - Missing attributes in SVGSymbolElement https://github.com/w3c/svgwg/issues/803
+map2.symbol.add('x').add('y').add('width').add('height')
+
 maps.push(map2)
 
 /** @type {Set<string>} */
