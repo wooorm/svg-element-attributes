@@ -2,7 +2,6 @@
  * @typedef {Set<string>} InfoSet
  * @typedef {Record<string, InfoSet>} InfoMap
  */
-
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import fetch from 'node-fetch'
@@ -37,7 +36,7 @@ while (++index < row1.length) {
   let elementIndex = -1
 
   while (++elementIndex < elements.length) {
-    const element = toString(elements[elementIndex]).replace(/[‘’]/g, '')
+    const element = toString(elements[elementIndex]).replaceAll(/[‘’]/g, '')
     let attributeIndex = -1
 
     if (!own.call(map1, element)) {
@@ -45,7 +44,7 @@ while (++index < row1.length) {
     }
 
     while (++attributeIndex < attributes.length) {
-      const attribute = toString(attributes[attributeIndex]).replace(
+      const attribute = toString(attributes[attributeIndex]).replaceAll(
         /[‘’]/g,
         ''
       )
