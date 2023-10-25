@@ -3704,6 +3704,7 @@ export const svgElementAttributes = {
     'font-weight',
     'glyph-orientation-horizontal',
     'glyph-orientation-vertical',
+    'height',
     'image-rendering',
     'kerning',
     'letter-spacing',
@@ -3735,8 +3736,11 @@ export const svgElementAttributes = {
     'unicode-bidi',
     'viewBox',
     'visibility',
+    'width',
     'word-spacing',
-    'writing-mode'
+    'writing-mode',
+    'x',
+    'y'
   ],
   tbreak: [
     'requiredExtensions',

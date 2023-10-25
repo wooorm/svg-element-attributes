@@ -2,7 +2,6 @@
  * @typedef {Set<string>} InfoSet
  * @typedef {Record<string, InfoSet>} InfoMap
  */
-
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import fetch from 'node-fetch'
@@ -37,7 +36,7 @@ while (++index < row1.length) {
   let elementIndex = -1
 
   while (++elementIndex < elements.length) {
-    const element = toString(elements[elementIndex]).replace(/[‘’]/g, '')
+    const element = toString(elements[elementIndex]).replaceAll(/[‘’]/g, '')
     let attributeIndex = -1
 
     if (!own.call(map1, element)) {
@@ -45,7 +44,7 @@ while (++index < row1.length) {
     }
 
     while (++attributeIndex < attributes.length) {
-      const attribute = toString(attributes[attributeIndex]).replace(
+      const attribute = toString(attributes[attributeIndex]).replaceAll(
         /[‘’]/g,
         ''
       )
@@ -127,6 +126,9 @@ while (++index < rows2.length) {
     map2[element].add(attribute)
   }
 }
+
+// Missing from the spec, see: svg-element-attributes#4 <https://github.com/w3c/svgwg/issues/803>
+map2.symbol.add('x').add('y').add('width').add('height')
 
 maps.push(map2)
 
