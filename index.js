@@ -1,7 +1,7 @@
 /**
  * Map of SVG elements to allowed attributes.
  *
- * @type {Record<string, Array<string>>}
+ * @type {Record<string, ReadonlyArray<string>>}
  */
 export const svgElementAttributes = {
   '*': [

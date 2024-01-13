@@ -2,43 +2,32 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {svgElementAttributes} from './index.js'
 
-const own = {}.hasOwnProperty
+test('svgElementAttributes', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+      'svgElementAttributes'
+    ])
+  })
 
-test('svgElementAttributes', function () {
-  assert.equal(typeof svgElementAttributes, 'object', 'should be an `object`')
+  await t.test('should be an `object`', async function () {
+    assert.equal(typeof svgElementAttributes, 'object')
+  })
 
-  /** @type {string} */
-  let tagName
+  await t.test('values', async function (t) {
+    const tagNames = Object.keys(svgElementAttributes)
 
-  for (tagName in svgElementAttributes) {
-    if (own.call(svgElementAttributes, tagName)) {
-      assert.ok(Array.isArray(svgElementAttributes[tagName]), tagName)
+    for (const tagName of tagNames) {
+      await t.test(tagName, async function () {
+        const attributes = svgElementAttributes[tagName]
+
+        for (const attribute of attributes) {
+          assert.equal(typeof attribute, 'string')
+          assert.equal(attribute, attribute.trim())
+          assert.match(attribute, /^[a-z][a-z\d-]*$/i)
+        }
+
+        assert.ok(Array.isArray(attributes))
+      })
     }
-  }
-
-  for (tagName in svgElementAttributes) {
-    if (own.call(svgElementAttributes, tagName)) {
-      const attributes = svgElementAttributes[tagName]
-      let index = -1
-
-      while (++index < attributes.length) {
-        const attribute = attributes[index]
-        const label = attribute + ' in ' + tagName
-        assert.strictEqual(
-          typeof attribute,
-          'string',
-          label + ' should be string'
-        )
-        assert.strictEqual(
-          attribute,
-          attribute.trim(),
-          label + ' should be trimmed'
-        )
-        assert.ok(
-          /^[a-z][a-z\d-]*$/i.test(attribute),
-          label + ' should be `a-z-`'
-        )
-      }
-    }
-  }
+  })
 })
