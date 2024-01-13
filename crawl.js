@@ -4,7 +4,7 @@
  */
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
-import fetch from 'node-fetch'
+import {fetch} from 'undici'
 import {ariaAttributes} from 'aria-attributes'
 import {fromHtml} from 'hast-util-from-html'
 import {select, selectAll} from 'hast-util-select'
