@@ -1,9 +1,9 @@
 # svg-element-attributes
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
 Map of SVG elements to allowed attributes.
 
@@ -15,7 +15,6 @@ Map of SVG elements to allowed attributes.
 *   [Use](#use)
 *   [API](#api)
     *   [`svgElementAttributes`](#svgelementattributes)
-*   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
 *   [Related](#related)
@@ -26,8 +25,8 @@ Map of SVG elements to allowed attributes.
 
 This is a map of tag names to lists of allowed attributes.
 Global attributes are stored at the special tag name `*`.
-All attributes from [SVG 1.1][1.1], [SVG Tiny 1.2][1.2], and [SVG 2][2.0] are
-included.
+All attributes from [SVG 1.1][w3-svg-1.1], [SVG Tiny 1.2][w3-svg-1.2], and
+[SVG 2][w3-svg-2.0] are included.
 
 > 👉 **Note**: Includes deprecated attributes.
 
@@ -41,20 +40,21 @@ SVG elements.
 
 ## Install
 
-This package is [ESM only][esm].
-In Node.js (version 14.14+, 16.0+), install with [npm][]:
+This package is [ESM only][github-gist-esm].
+In Node.js (version 16+),
+install with [npm][npm-install]:
 
 ```sh
 npm install svg-element-attributes
 ```
 
-In Deno with [`esm.sh`][esmsh]:
+In Deno with [`esm.sh`][esm-sh]:
 
 ```js
 import {svgElementAttributes} from 'https://esm.sh/svg-element-attributes@2'
 ```
 
-In browsers with [`esm.sh`][esmsh]:
+In browsers with [`esm.sh`][esm-sh]:
 
 ```html
 <script type="module">
@@ -103,24 +103,25 @@ Yields:
 
 ## API
 
-This package exports the identifier `svgElementAttributes`.
+This package exports the identifier
+[`svgElementAttributes`][api-svg-element-attributes].
 There is no default export.
+
+It exports no [TypeScript][] types.
 
 ### `svgElementAttributes`
 
-Map of lowercase SVG elements to allowed attributes
-(`Record<string, Array<string>>`).
-
-## Types
-
-This package is fully typed with [TypeScript][].
-It exports no additional types.
+Map of SVG elements to allowed attributes (`Record<string, Array<string>>`).
 
 ## Compatibility
 
-This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 14.14+ and 16.0+.
-It also works in Deno and modern browsers.
+This projects is compatible with maintained versions of Node.js.
+
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`svg-element-attributes@2`,
+compatible with Node.js 12.
 
 ## Security
 
@@ -146,46 +147,48 @@ This package is safe.
 ## Contribute
 
 Yes please!
-See [How to Contribute to Open Source][contribute].
+See [How to Contribute to Open Source][open-source-guide-contribute].
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definition -->
 
-[build-badge]: https://github.com/wooorm/svg-element-attributes/workflows/main/badge.svg
+[api-svg-element-attributes]: #svgelementattributes
 
-[build]: https://github.com/wooorm/svg-element-attributes/actions
+[badge-build-image]: https://github.com/wooorm/svg-element-attributes/workflows/main/badge.svg
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/svg-element-attributes.svg
+[badge-build-url]: https://github.com/wooorm/svg-element-attributes/actions
 
-[coverage]: https://codecov.io/github/wooorm/svg-element-attributes
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/wooorm/svg-element-attributes.svg
 
-[downloads-badge]: https://img.shields.io/npm/dm/svg-element-attributes.svg
+[badge-coverage-url]: https://codecov.io/github/wooorm/svg-element-attributes
 
-[downloads]: https://www.npmjs.com/package/svg-element-attributes
+[badge-downloads-image]: https://img.shields.io/npm/dm/svg-element-attributes.svg
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/svg-element-attributes.svg
+[badge-downloads-url]: https://www.npmjs.com/package/svg-element-attributes
 
-[size]: https://bundlephobia.com/result?p=svg-element-attributes
+[badge-size-image]: https://img.shields.io/bundlejs/size/svg-element-attributes
 
-[npm]: https://docs.npmjs.com/cli/install
+[badge-size-url]: https://bundlejs.com/?q=svg-element-attributes
 
-[esmsh]: https://esm.sh
+[esm-sh]: https://esm.sh
 
-[license]: license
+[file-license]: license
 
-[author]: https://wooorm.com
+[github-gist-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
-[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[npm-install]: https://docs.npmjs.com/cli/install
+
+[open-source-guide-contribute]: https://opensource.guide/how-to-contribute/
 
 [typescript]: https://www.typescriptlang.org
 
-[contribute]: https://opensource.guide/how-to-contribute/
+[w3-svg-1.1]: https://www.w3.org/TR/SVG/attindex.html
 
-[1.1]: https://www.w3.org/TR/SVG/attindex.html
+[w3-svg-1.2]: https://www.w3.org/TR/SVGTiny12/attributeTable.html
 
-[1.2]: https://www.w3.org/TR/SVGTiny12/attributeTable.html
+[w3-svg-2.0]: https://www.w3.org/TR/SVG2/attindex.html
 
-[2.0]: https://www.w3.org/TR/SVG2/attindex.html
+[wooorm]: https://wooorm.com
