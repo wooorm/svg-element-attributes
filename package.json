@@ -4,12 +4,12 @@
   "description": "Map of SVG elements to allowed attributes",
   "license": "MIT",
   "keywords": [
-    "svg",
-    "element",
-    "tag",
-    "name",
     "attribute",
+    "element",
+    "name",
     "property",
+    "svg",
+    "tag",
     "w3c"
   ],
   "repository": "wooorm/svg-element-attributes",
@@ -47,37 +47,33 @@
     "xo": "^0.56.0"
   },
   "scripts": {
-    "prepack": "npm run build && npm run format",
-    "generate": "node --conditions development build.js",
     "build": "tsc --build --clean && tsc --build && type-coverage",
+    "crawl": "node --conditions development crawl.js",
     "format": "remark . -qfo && prettier . -w --log-level warn && xo --fix",
+    "prepack": "npm run build && npm run format",
     "test-api": "node --conditions development test.js",
     "test-coverage": "c8 --check-coverage --100 --reporter lcov npm run test-api",
-    "test": "npm run generate && npm run build && npm run format && npm run test-coverage"
+    "test": "npm run crawl && npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
     "bracketSpacing": false,
     "semi": false,
-    "trailingComma": "none"
-  },
-  "xo": {
-    "prettier": true,
-    "rules": {
-      "unicorn/no-array-for-each": "off",
-      "unicorn/no-array-callback-reference": "off"
-    }
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm"
+      "remark-preset-wooorm"
     ]
   },
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
     "strict": true
+  },
+  "xo": {
+    "prettier": true
   }
 }
