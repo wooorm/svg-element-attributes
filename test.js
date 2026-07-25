@@ -13,6 +13,16 @@ test('svgElementAttributes', async function (t) {
     assert.equal(typeof svgElementAttributes, 'object')
   })
 
+  await t.test(
+    'should include SVG 2 presentation attributes in `*`',
+    async function () {
+      // `vector-effect` only exists in SVG 2 and is listed in the separate
+      // presentation attributes table (`styling.html#PresentationAttributes`).
+      assert.ok(svgElementAttributes['*'].includes('vector-effect'))
+      assert.ok(svgElementAttributes['*'].includes('paint-order'))
+    }
+  )
+
   await t.test('values', async function (t) {
     const tagNames = Object.keys(svgElementAttributes)
 
