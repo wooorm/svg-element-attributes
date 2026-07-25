@@ -12,6 +12,7 @@ import {toString} from 'hast-util-to-string'
 import {fetch} from 'undici'
 
 const maps = await Promise.all([requestSvg1(), requestSvgTiny(), requestSvg2()])
+const presentation = await requestSvg2PresentationAttributes()
 
 // Missing from the spec, see: svg-element-attributes#4 <https://github.com/w3c/svgwg/issues/803>
 maps[0].symbol.add('x').add('y').add('width').add('height')
@@ -73,6 +74,13 @@ for (const map of maps) {
 
       mergedAttributes.add(attribute)
     }
+  }
+}
+
+// SVG 2 presentation attributes may be specified on any element.
+for (const attribute of presentation) {
+  if (!ignoreAttribute(attribute)) {
+    globals.add(attribute)
   }
 }
 
@@ -194,6 +202,33 @@ async function requestSvg2() {
   }
 
   return map
+}
+
+async function requestSvg2PresentationAttributes() {
+  const response = await fetch('https://www.w3.org/TR/SVG2/styling.html')
+  const text = await response.text()
+  const rows = selectAll('tr', fromHtml(text))
+  /** @type {Array<string>} */
+  const names = []
+
+  for (const row of rows) {
+    const cells = selectAll('td', row)
+
+    if (
+      cells.length > 1 &&
+      toString(cells[1]).includes('Any element in the SVG namespace')
+    ) {
+      for (const property of selectAll('.property', cells[0])) {
+        names.push(toString(property))
+      }
+    }
+  }
+
+  if (names.length === 0) {
+    throw new Error('Couldn’t find presentation attributes in SVG 2')
+  }
+
+  return names
 }
 
 /**
