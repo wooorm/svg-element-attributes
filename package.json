@@ -43,7 +43,6 @@
     "remark-preset-wooorm": "^11.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^6.0.0",
-    "undici": "^8.0.0",
     "xo": "^4.0.0"
   },
   "scripts": {

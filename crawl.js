@@ -9,7 +9,6 @@ import {fromHtml} from 'hast-util-from-html'
 import {isEventHandler} from 'hast-util-is-event-handler'
 import {select, selectAll} from 'hast-util-select'
 import {toString} from 'hast-util-to-string'
-import {fetch} from 'undici'
 
 const maps = await Promise.all([requestSvg1(), requestSvgTiny(), requestSvg2()])
 
