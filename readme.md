@@ -9,17 +9,17 @@ Map of SVG elements to allowed attributes.
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`svgElementAttributes`](#svgelementattributes)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`svgElementAttributes`](#svgelementattributes)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Related](#related)
+* [Contribute](#contribute)
+* [License](#license)
 
 ## What is this?
 
@@ -129,20 +129,20 @@ This package is safe.
 
 ## Related
 
-*   [`wooorm/web-namespaces`](https://github.com/wooorm/web-namespaces)
-    — list of web namespaces
-*   [`wooorm/html-tag-names`](https://github.com/wooorm/html-tag-names)
-    — list of HTML tag names
-*   [`wooorm/mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
-    — list of MathML tag names
-*   [`wooorm/svg-tag-names`](https://github.com/wooorm/svg-tag-names)
-    — list of SVG tag names
-*   [`wooorm/html-void-elements`](https://github.com/wooorm/html-void-elements)
-    — list of void HTML tag names
-*   [`wooorm/html-element-attributes`](https://github.com/wooorm/html-element-attributes)
-    — map of HTML elements to attributes
-*   [`wooorm/aria-attributes`](https://github.com/wooorm/aria-attributes)
-    — list of ARIA attributes
+* [`wooorm/web-namespaces`](https://github.com/wooorm/web-namespaces)
+  — list of web namespaces
+* [`wooorm/html-tag-names`](https://github.com/wooorm/html-tag-names)
+  — list of HTML tag names
+* [`wooorm/mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
+  — list of MathML tag names
+* [`wooorm/svg-tag-names`](https://github.com/wooorm/svg-tag-names)
+  — list of SVG tag names
+* [`wooorm/html-void-elements`](https://github.com/wooorm/html-void-elements)
+  — list of void HTML tag names
+* [`wooorm/html-element-attributes`](https://github.com/wooorm/html-element-attributes)
+  — map of HTML elements to attributes
+* [`wooorm/aria-attributes`](https://github.com/wooorm/aria-attributes)
+  — list of ARIA attributes
 
 ## Contribute
 

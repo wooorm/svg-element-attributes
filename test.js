@@ -23,7 +23,7 @@ test('svgElementAttributes', async function (t) {
         for (const attribute of attributes) {
           assert.equal(typeof attribute, 'string')
           assert.equal(attribute, attribute.trim())
-          assert.match(attribute, /^[a-z][a-z\d-]*$/i)
+          assert.match(attribute, /^[a-z][\d\-a-z]*$/i)
         }
 
         assert.ok(Array.isArray(attributes))

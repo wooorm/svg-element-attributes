@@ -77,11 +77,11 @@ for (const map of maps) {
 }
 
 /** @type {Record<string, ReadonlyArray<string>>} */
-const result = {'*': [...globals].sort()}
-const tagNames = Object.keys(merged).sort()
+const result = {'*': [...globals].sort((a, b) => a.localeCompare(b))}
+const tagNames = Object.keys(merged).sort((a, b) => a.localeCompare(b))
 
 for (const tagName of tagNames) {
-  result[tagName] = [...merged[tagName]].sort()
+  result[tagName] = [...merged[tagName]].sort((a, b) => a.localeCompare(b))
 }
 
 await fs.writeFile(
@@ -147,7 +147,7 @@ async function requestSvgTiny() {
 
   for (const row of rows) {
     const name = select('.attribute-name', row)
-    assert(name, 'expected `name`')
+    assert.ok(name, 'expected `name`')
     const attribute = toString(name)
     const elements = selectAll('.element', row)
 
@@ -178,7 +178,7 @@ async function requestSvg2() {
 
   for (const row of rows) {
     const name = select('.attr-name span', row)
-    assert(name, 'expected `name`')
+    assert.ok(name, 'expected `name`')
     const attribute = toString(name)
     const elements = selectAll('.element-name span', row)
 
@@ -197,6 +197,8 @@ async function requestSvg2() {
 }
 
 /**
+ * Whether an attribute should be ignored.
+ *
  * @param {string} attribute
  *   Key.
  * @returns {boolean}
@@ -212,9 +214,5 @@ function ignoreAttribute(attribute) {
     colonIndex === -1 ? undefined : attribute.slice(0, colonIndex)
 
   // Ignore some namespaces.
-  if (namespace === 'ev' || namespace === 'xlink' || namespace === 'xml') {
-    return true
-  }
-
-  return false
+  return namespace === 'ev' || namespace === 'xlink' || namespace === 'xml'
 }
