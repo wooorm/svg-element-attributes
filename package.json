@@ -1,35 +1,10 @@
 {
-  "name": "svg-element-attributes",
-  "version": "2.1.0",
-  "description": "Map of SVG elements to allowed attributes",
-  "license": "MIT",
-  "keywords": [
-    "attribute",
-    "element",
-    "name",
-    "property",
-    "svg",
-    "tag",
-    "w3c"
-  ],
-  "repository": "wooorm/svg-element-attributes",
-  "bugs": "https://github.com/wooorm/svg-element-attributes/issues",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/wooorm"
-  },
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "bugs": "https://github.com/wooorm/svg-element-attributes/issues",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
-  "sideEffects": false,
-  "type": "module",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "files": [
-    "index.d.ts",
-    "index.js"
-  ],
+  "description": "Map of SVG elements to allowed attributes",
   "devDependencies": {
     "@types/node": "^26.0.0",
     "aria-attributes": "^2.0.0",
@@ -45,15 +20,27 @@
     "typescript": "^6.0.0",
     "xo": "^4.0.0"
   },
-  "scripts": {
-    "build": "tsc --build --clean && tsc --build && type-coverage",
-    "crawl": "node --conditions development crawl.js",
-    "format": "remark . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
-    "prepack": "npm run build && npm run format",
-    "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
-    "test": "npm run crawl && npm run build && npm run format && npm run test-coverage"
+  "files": [
+    "index.d.ts.map",
+    "index.d.ts",
+    "index.js"
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wooorm"
   },
+  "keywords": [
+    "attribute",
+    "element",
+    "name",
+    "property",
+    "svg",
+    "tag",
+    "w3c"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "svg-element-attributes",
   "prettier": {
     "bracketSpacing": false,
     "semi": false,
@@ -67,9 +54,23 @@
       "remark-preset-wooorm"
     ]
   },
+  "repository": "wooorm/svg-element-attributes",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "crawl": "node --conditions development crawl.js",
+    "format": "remark . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
+    "prepack": "npm run build && npm run format",
+    "test-api": "node --conditions development test.js",
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
+    "test": "npm run crawl && npm run build && npm run format && npm run test-coverage"
+  },
+  "sideEffects": false,
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
     "strict": true
-  }
+  },
+  "types": "index.d.ts",
+  "type": "module",
+  "version": "2.1.0"
 }
