@@ -1,7 +1,3 @@
-/**
- * @typedef {Record<string, Set<string>>} InfoMap
- */
-
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import {ariaAttributes} from 'aria-attributes'
@@ -50,7 +46,7 @@ for (const map of maps) {
   }
 }
 
-/** @type {InfoMap} */
+/** @type {Record<string, Set<string>>} */
 const merged = {}
 
 for (const map of maps) {
@@ -101,7 +97,7 @@ async function requestSvg1() {
   const response = await fetch('https://www.w3.org/TR/SVG11/attindex.html')
   const text = await response.text()
 
-  /** @type {InfoMap} */
+  /** @type {Record<string, Set<string>>} */
   const map = {}
   const rows = selectAll('.property-table tr', fromHtml(text))
 
@@ -136,7 +132,7 @@ async function requestSvgTiny() {
     'https://www.w3.org/TR/SVGTiny12/attributeTable.html'
   )
   const text = await response.text()
-  /** @type {InfoMap} */
+  /** @type {Record<string, Set<string>>} */
   const map = {}
   const rows = selectAll('#attributes .attribute', fromHtml(text))
 
@@ -167,7 +163,7 @@ async function requestSvgTiny() {
 async function requestSvg2() {
   const response = await fetch('https://www.w3.org/TR/SVG2/attindex.html')
   const text = await response.text()
-  /** @type {InfoMap} */
+  /** @type {Record<string, Set<string>>} */
   const map = {}
   const rows = selectAll('tbody tr', fromHtml(text))
 
